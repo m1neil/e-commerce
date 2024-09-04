@@ -1,0 +1,75 @@
+//====================================================================================================
+.promo {
+	background-color: #f2f0f1;
+	// .promo__container
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		column-gap: toRem(50);
+	}
+	// .promo__content
+	&__content {
+		padding-top: toRem(103);
+		flex: 0 1 toRem(577);
+		& > * {
+			margin-bottom: toRem(32);
+		}
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+	}
+	// .promo__title
+	&__title {
+	}
+	// .promo__text
+	&__text {
+	}
+	// .promo__link
+	&__link {
+		margin-bottom: toRem(48);
+	}
+	// .promo__info
+	&__info {
+	}
+	// .promo__picture
+	&__picture {
+		padding-top: toRem(35);
+		position: relative;
+		flex: 0 1 toRem(620);
+		margin-right: toRem(-30);
+		align-self: flex-end;
+	}
+	// .promo__decoration
+	&__decoration {
+		position: absolute;
+		width: percent(104, 620);
+		aspect-ratio: 1;
+		top: percent(80, 648);
+		right: toRem(10);
+		// .promo__decoration--small
+		&--small {
+			width: percent(56, 620);
+			right: auto;
+			left: 0;
+			top: percent(280, 648);
+		}
+	}
+	// .promo__img
+	&__img {
+		width: 100%;
+	}
+}
+
+.info-promo {
+	// .info-promo__item
+	&__item {
+	}
+	// .info-promo__value
+	&__value {
+	}
+	// .info-promo__label
+	&__label {
+	}
+}
+
+//====================================================================================================

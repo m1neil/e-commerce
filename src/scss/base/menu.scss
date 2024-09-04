@@ -1,0 +1,236 @@
+.menu {
+	@media (max-width: $mobile) {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		left: -100%;
+		top: 0;
+		overflow: auto;
+		padding: toRem(50) toRem(15) toRem(15) toRem(30);
+		transition: left 0.3s;
+		z-index: 1;
+		&::before {
+			content: "";
+			position: fixed;
+			width: 100%;
+			height: toRem(70);
+			left: -100%;
+			top: 0;
+			transition: left 0.3s;
+			z-index: 2;
+		}
+		.menu-open & {
+			left: 0;
+			&::before {
+				left: 0;
+			}
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		column-gap: toRem(24);
+		row-gap: toRem(7);
+		flex-wrap: wrap;
+		@media (max-width: $mobile) {
+		}
+	}
+	// .menu__item
+	&__item {
+	}
+	&__spoller {
+		position: relative;
+		padding-right: toRem(17);
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: toRem(7);
+			height: toRem(1.3);
+			right: 0;
+			top: calc(50% - toRem(0.65));
+			background-color: var(--bg-accent);
+			border-radius: toRem(5);
+			transition: transform 0.3s;
+			will-change: transform;
+		}
+		&::after {
+			transform: rotate(-45deg);
+		}
+		&::before {
+			right: toRem(4.5);
+			transform: rotate(45deg);
+		}
+		&:has(.menu__link:focus-visible, .menu__sub-link:focus-visible) {
+			&::before {
+				transform: rotate(-45deg);
+			}
+			&::after {
+				transform: rotate(45deg);
+			}
+			.menu__wrapper {
+				opacity: 1;
+				visibility: visible;
+				pointer-events: all;
+				transform: translate(0, 0);
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					transform: rotate(-45deg);
+				}
+				&::after {
+					transform: rotate(45deg);
+				}
+				.menu__wrapper {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0, 0);
+				}
+			}
+		}
+	}
+
+	&__summary {
+		list-style-type: none;
+		&::-webkit-details-marker {
+			display: none;
+		}
+	}
+	// .menu__link
+	&__link,
+	&__sub-link {
+		color: var(--text-accent);
+		position: relative;
+		line-height: 1.2;
+		text-transform: capitalize;
+		&:not(:has(+ .menu__wrapper)) {
+			&::before {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: toRem(1);
+				bottom: 0;
+				left: 0;
+				background-color: var(--bg-accent);
+				transition: width 0.3s;
+				border-radius: toRem(5);
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					&::before {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		@media (max-width: $mobile) {
+		}
+	}
+
+	&__summary {
+		&:has(+ .menu__wrapper) {
+			a {
+				&::before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&__sub-link {
+		&:not(:has(+ .menu__sub-list)) {
+			color: var(--text-inverse);
+			&::before {
+				background-color: var(--bg-inverse);
+			}
+		}
+	}
+	&__wrapper {
+		@media (min-width: $mobile) {
+			position: absolute;
+			padding-top: toRem(5);
+			top: 100%;
+			left: 0;
+			width: auto;
+			min-width: toRem(130);
+			pointer-events: none;
+			opacity: 0;
+			visibility: hidden;
+			transform: translate(5%, 0);
+			transition: all 0.3s;
+		}
+	}
+	// .menu__sub-list
+	&__sub-list {
+		background-color: var(--bg-accent);
+		border-radius: toRem(8);
+		padding: toRem(15);
+	}
+	// .menu__sub-item
+	&__sub-item {
+		&:not(:last-child) {
+			margin-bottom: toRem(7);
+		}
+	}
+	// .menu__sub-link
+	&__sub-link {
+	}
+}
+
+.menu {
+}
+
+//Burger Icon
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: toRem(19);
+		height: toRem(15);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: toRem(2);
+			background-color: var(--bg-accent);
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - toRem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - toRem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - toRem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}

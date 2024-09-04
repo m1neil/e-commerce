@@ -1,0 +1,149 @@
+.header {
+	// .header__banner
+	&__banner {
+	}
+	// .header__main
+	&__main {
+	}
+}
+.banner-header {
+	padding-block: toRem(9);
+	background-color: var(--bg-accent);
+	// .banner-header__container
+	&__container {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(10);
+		color: var(--text-inverse);
+	}
+	// .banner-header__text
+	&__text {
+		flex-grow: 1;
+		font-size: toRem(14);
+		text-align: center;
+		line-height: 1.2;
+		a {
+			font-weight: 500;
+			text-decoration: underline;
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+	// .banner-header__close
+	&__close {
+		flex-shrink: 0;
+		width: toRem(20);
+		height: toRem(20);
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: toRem(17);
+			height: toRem(1.5);
+			background-color: var(--bg-inverse);
+			border-radius: toRem(5);
+		}
+		&::before {
+			left: 50%;
+			top: toRem(10);
+			transform: translate(-50%, 0) rotate(-45deg);
+		}
+		&::after {
+			right: 50%;
+			bottom: toRem(9);
+			transform: translate(50%, 0) rotate(45deg);
+		}
+	}
+}
+.main-header {
+	padding-block: toRem(24);
+	// .main-header__container
+	&__container {
+		align-items: center;
+		display: flex;
+		column-gap: toRem(40);
+	}
+	// .main-header__logo
+	&__logo {
+		flex-shrink: 0;
+		width: toRem(160);
+		img {
+			width: 100%;
+		}
+	}
+	// .main-header__menu
+	&__menu {
+	}
+	// .main-header__form
+	&__form {
+		flex: 1 0 toRem(270);
+	}
+	// .main-header__actions
+	&__actions {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(15);
+	}
+	// .main-header__link
+	&__link {
+		flex-shrink: 0;
+		width: toRem(24);
+		height: toRem(24);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--text-accent);
+		&::before {
+			transition: transform 0.3s;
+			will-change: transform;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					transform: scale(1.2);
+				}
+			}
+		}
+		&.--icon-cart {
+			font-size: toRem(22);
+		}
+		&.--icon-account {
+			font-size: toRem(20);
+		}
+	}
+}
+
+.form-main-header {
+	position: relative;
+	// .form-main-header__input
+	&__input {
+		padding-left: toRem(52);
+	}
+	// .form-main-header__submit
+	&__submit {
+		position: absolute;
+		width: toRem(48);
+		height: 100%;
+		top: 50%;
+		// left: toRem(18);
+		left: 0;
+		transform: translate(0, -50%);
+		line-height: 0;
+		&::before {
+			will-change: transform;
+			transition: transform 0.3s;
+			font-size: toRem(20);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+}

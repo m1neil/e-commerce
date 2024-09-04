@@ -1,0 +1,14 @@
+// Заголовки, загальні БЕМ блоки та інше...
+.title {
+	color: var(--text-accent);
+	font-family: $fontAccent;
+	font-weight: 700;
+	@include adaptiveValue("font-size", 48, 32, 0, $containerWidth, 480);
+	// .title--main
+	&--main {
+		@include adaptiveValue("font-size", 64, 36, 0, $containerWidth, 700);
+	}
+}
+
+.text {
+}

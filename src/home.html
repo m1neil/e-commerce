@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	@@include('html/_head.htm',{
+	"title":"Main - E-commerce"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{})
+			<main class="page">
+				<section class="promo">
+					<div class="promo__container">
+						<div class="promo__content">
+							<h1 class="promo__title title title--main">
+								FIND CLOTHES THAT MATCHES YOUR STYLE
+							</h1>
+							<div class="promo__text text">
+								<p>
+									Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.
+								</p>
+							</div>
+							<!-- todo: add text-transform: capitalize -->
+							<a href="#" class="promo__link button">shop now</a>
+							<div class="promo__info info-promo">
+								<div class="info-promo__item">
+									<div class="info-promo__value">200+</div>
+									<div class="info-promo__label">International Brands</div>
+								</div>
+								<div class="info-promo__item">
+									<div class="info-promo__value">2,000+</div>
+									<div class="info-promo__label">High-Quality Products</div>
+								</div>
+								<div class="info-promo__item">
+									<div class="info-promo__value">30,000+</div>
+									<div class="info-promo__label">Happy Customers</div>
+								</div>
+							</div>
+						</div>
+						<div class="promo__picture">
+							<img src="@img/promo/decoration.svg" alt="#" class="promo__decoration promo__decoration--small">
+							<img src="@img/promo/decoration.svg" alt="#" class="promo__decoration">
+							<img src="@img/promo/promo.jpg" alt="#" class="promo__img">
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_js.htm',{})
+	</body>
+</html>
