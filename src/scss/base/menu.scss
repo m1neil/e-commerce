@@ -13,11 +13,12 @@
 			content: "";
 			position: fixed;
 			width: 100%;
-			height: toRem(70);
+			height: toRem(60);
 			left: -100%;
-			top: 0;
+			top: toRem(38);
 			transition: left 0.3s;
 			z-index: 2;
+			background-color: var(--bg-primary);
 		}
 		.menu-open & {
 			left: 0;
@@ -35,11 +36,52 @@
 		@media (max-width: $mobile) {
 			flex-direction: column;
 			align-items: flex-start;
+			row-gap: toRem(15);
 		}
 	}
 	// .menu__item
 	&__item {
 		position: relative;
+		@media (min-width: $mobile) {
+			&:has(.menu__link:focus-visible, .menu__sub-link:focus-visible),
+			&.--open {
+				.menu__wrapper {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0, 0);
+				}
+				.menu__button {
+					&::before {
+						transform: rotate(-45deg);
+					}
+					&::after {
+						transform: rotate(45deg);
+					}
+				}
+			}
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				.menu__button {
+					&::before {
+						transform: rotate(-45deg);
+					}
+					&::after {
+						transform: rotate(45deg);
+					}
+				}
+
+				.menu__wrapper {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0, 0);
+				}
+			}
+		}
+		@media (max-width: $mobile) {
+		}
 	}
 
 	// .menu__link
@@ -69,6 +111,7 @@
 		}
 
 		@media (max-width: $mobile) {
+			font-size: toRem(22);
 		}
 	}
 
@@ -85,6 +128,10 @@
 			visibility: hidden;
 			transform: translate(5%, 0);
 			transition: all 0.3s;
+			z-index: 2;
+		}
+		@media (max-width: $mobile) {
+			min-width: toRem(150);
 		}
 	}
 	// .menu__sub-list
@@ -101,6 +148,57 @@
 	}
 	// .menu__sub-link
 	&__sub-link {
+		color: var(--text-inverse);
+		&::before {
+			background-color: var(--bg-inverse);
+		}
+	}
+	&__title {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(4);
+		a {
+			@media (min-width: $tablet) {
+				z-index: 1;
+				margin-right: toRem(-20);
+				padding-right: toRem(20);
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+		@media (max-width: $mobile) {
+			&:not(:last-child) {
+				margin-bottom: toRem(10);
+			}
+		}
+	}
+	&__button {
+		position: relative;
+		width: toRem(16);
+		height: toRem(16);
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: toRem(7);
+			background-color: var(--bg-accent);
+			border-radius: toRem(5);
+			height: toRem(1);
+			transform: translate(0, -50%);
+			transition: transform 0.3s;
+			will-change: transform;
+		}
+		&::before {
+			left: toRem(2.5);
+			transform: rotate(45deg);
+		}
+		&::after {
+			right: toRem(2);
+			transform: rotate(-45deg);
+		}
 	}
 }
 

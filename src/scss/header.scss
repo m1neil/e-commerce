@@ -1,4 +1,10 @@
 .header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 50;
+	background-color: var(--bg-primary);
 	// .header__banner
 	&__banner {
 	}
@@ -80,6 +86,8 @@
 	}
 	// .main-header__logo
 	&__logo {
+		position: relative;
+		z-index: 1;
 		flex-shrink: 0;
 		width: toRem(160);
 		img {

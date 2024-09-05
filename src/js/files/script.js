@@ -1,4 +1,5 @@
 // Підключення функціоналу "Чертоги Фрілансера"
+import { document } from "postcss";
 import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
@@ -6,7 +7,6 @@ import { flsModules } from "./modules.js";
 window.addEventListener('load', windowLoaded)
 
 function windowLoaded() {
-	document.addEventListener('click', documentActions)
 	const isTouch = document.documentElement.classList.contains('touch')
 	const banner = document.querySelector('.banner-header')
 	const isTablet = window.matchMedia(`(min-width: ${767.98 / 16}em)`).matches
@@ -18,6 +18,8 @@ function windowLoaded() {
 			hideBanner(banner)
 	}
 
+	document.addEventListener('click', documentActions)
+
 	function documentActions(e) {
 		const targetElement = e.target
 
@@ -26,10 +28,35 @@ function windowLoaded() {
 			hideBanner(targetElement.closest('.banner-header'))
 		}
 
-		if (targetElement.closest('.main-header__link.--icon-search'))
+		if (!document.documentElement.classList.contains('menu-open') &&
+			targetElement.closest('.main-header__link.--icon-search'))
 			document.documentElement.classList.toggle('search-show')
 		else if (!targetElement.closest('.header'))
 			document.documentElement.classList.remove('search-show')
+
+		// is touch actions and tablet
+		if (isTouch) {
+			if (isTablet) {
+				if (targetElement.closest('[data-spoller-trigger]')) {
+					const parentBlock = targetElement.closest('[data-spoller-block]')
+					parentBlock.classList.toggle('--open')
+
+					if (parentBlock.classList.contains('--open') &&
+						document.documentElement.classList.contains('search-show'))
+						document.documentElement.classList.remove('search-show')
+
+				} else if (!targetElement.closest('.menu__item')) {
+					const openSubMenu = document.querySelector('[data-spoller-block].--open')
+					if (openSubMenu)
+						openSubMenu.classList.remove('--open')
+				}
+			}
+
+			if (document.documentElement.classList.contains('menu-open'))
+				document.documentElement.classList.remove('search-show')
+		}
+
+
 	}
 }
 
@@ -46,4 +73,10 @@ function hideBanner(banner) {
 	setTimeout(() => {
 		banner.remove()
 	}, 500);
+}
+
+function initMenuSpoller() {
+	const spollers = document.querySelectorAll('[data-spoller-block]')
+	if (!spollers.length) return
+	// const mediaSpollers = Array.from(spollers).filter(spoller => spoller.dataset.spollerBlock.split(',')[0])
 }
