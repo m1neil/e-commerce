@@ -144,7 +144,6 @@ function initMenuSpoller() {
 }
 
 function setSpollerTabIndex(matches, spollers) {
-	console.log(spollers);
 	spollers.forEach(({ item }) => {
 		const buttons = item.querySelectorAll('[data-spoller-trigger]')
 		if (!buttons.length) return
@@ -158,9 +157,12 @@ function setSpollerTabIndex(matches, spollers) {
 
 function toggleShowSubMenu(buttons, hideOrShowContent, isAddTabindex = true) {
 	buttons.forEach(button => {
-		isAddTabindex ?
-			button.setAttribute('tabindex', -1) :
+		if (isAddTabindex) {
+			button.setAttribute('tabindex', -1)
+			button.parentElement.classList.remove('--open')
+		} else {
 			button.removeAttribute('tabindex')
+		}
 
 		const content = button.parentElement.nextElementSibling
 		hideOrShowContent(content, 0)
