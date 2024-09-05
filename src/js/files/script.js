@@ -7,7 +7,9 @@ window.addEventListener('load', windowLoaded)
 
 function windowLoaded() {
 	document.addEventListener('click', documentActions)
+	const isTouch = document.documentElement.classList.contains('touch')
 	const banner = document.querySelector('.banner-header')
+	const isTablet = window.matchMedia(`(min-width: ${767.98 / 16}em)`).matches
 	if (banner) {
 		const isShowDiscount = sessionStorage.getItem('show-discount') ?
 			parseInt(sessionStorage.getItem('show-discount')) : 1
@@ -15,15 +17,23 @@ function windowLoaded() {
 		if (!isShowDiscount)
 			hideBanner(banner)
 	}
-}
 
-function documentActions(e) {
-	const targetElement = e.target
-	if (targetElement.closest('.banner-header__close')) {
-		sessionStorage.setItem('show-discount', 0)
-		hideBanner(targetElement.closest('.banner-header'))
+	function documentActions(e) {
+		const targetElement = e.target
+
+		if (targetElement.closest('.banner-header__close')) {
+			sessionStorage.setItem('show-discount', 0)
+			hideBanner(targetElement.closest('.banner-header'))
+		}
+
+		if (targetElement.closest('.main-header__link.--icon-search'))
+			document.documentElement.classList.toggle('search-show')
+		else if (!targetElement.closest('.header'))
+			document.documentElement.classList.remove('search-show')
 	}
 }
+
+
 
 function hideBanner(banner) {
 	banner.style.overflow = 'hidden'

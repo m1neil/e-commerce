@@ -11,4 +11,9 @@
 }
 
 .text {
+	color: var(--text-primary);
+	line-height: 1.37;
+	p:not(:last-child) {
+		margin-bottom: toRem(7);
+	}
 }

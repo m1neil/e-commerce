@@ -7,6 +7,8 @@
 	}
 }
 .banner-header {
+	position: relative;
+	z-index: 1;
 	padding-block: toRem(9);
 	background-color: var(--bg-accent);
 	// .banner-header__container
@@ -60,12 +62,21 @@
 	}
 }
 .main-header {
-	padding-block: toRem(24);
 	// .main-header__container
 	&__container {
+		position: relative;
 		align-items: center;
 		display: flex;
+		min-height: toRem(96);
 		column-gap: toRem(40);
+		padding-block: toRem(15);
+		@media (max-width: $tablet) {
+			column-gap: toRem(25);
+			min-height: toRem(60);
+		}
+		@media (max-width: $mobile) {
+			column-gap: toRem(16);
+		}
 	}
 	// .main-header__logo
 	&__logo {
@@ -74,19 +85,32 @@
 		img {
 			width: 100%;
 		}
+		@media (max-width: $mobile) {
+			width: toRem(126);
+		}
 	}
 	// .main-header__menu
 	&__menu {
+		@media (max-width: $tablet) {
+			flex-grow: 1;
+		}
 	}
 	// .main-header__form
 	&__form {
-		flex: 1 0 toRem(270);
+		@media (min-width: $tablet) {
+			flex: 1 0 toRem(270);
+		}
 	}
 	// .main-header__actions
 	&__actions {
 		display: flex;
 		align-items: center;
 		column-gap: toRem(15);
+		@media (max-width: $mobile) {
+			flex-grow: 1;
+			column-gap: toRem(12);
+			justify-content: flex-end;
+		}
 	}
 	// .main-header__link
 	&__link {
@@ -96,6 +120,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		font-size: toRem(20);
 		color: var(--text-accent);
 		&::before {
 			transition: transform 0.3s;
@@ -108,17 +133,37 @@
 				}
 			}
 		}
+		&.--icon-search {
+			display: none;
+			@media (max-width: $tablet) {
+				display: inline-flex;
+			}
+		}
 		&.--icon-cart {
 			font-size: toRem(22);
-		}
-		&.--icon-account {
-			font-size: toRem(20);
 		}
 	}
 }
 
 .form-main-header {
 	position: relative;
+	@media (max-width: $tablet) {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background-color: #fff;
+		width: 100%;
+		padding: 0 toRem(20) toRem(15);
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			visibility 0.3s,
+			opacity 0.3s;
+		.search-show & {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 	// .form-main-header__input
 	&__input {
 		padding-left: toRem(52);
@@ -127,9 +172,8 @@
 	&__submit {
 		position: absolute;
 		width: toRem(48);
-		height: 100%;
+		height: toRem(48);
 		top: 50%;
-		// left: toRem(18);
 		left: 0;
 		transform: translate(0, -50%);
 		line-height: 0;
@@ -144,6 +188,11 @@
 					transform: scale(1.2);
 				}
 			}
+		}
+		@media (max-width: $tablet) {
+			left: toRem(20);
+			top: 0;
+			transform: translate(0, 0);
 		}
 	}
 }
