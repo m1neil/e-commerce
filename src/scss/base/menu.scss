@@ -43,7 +43,24 @@
 	&__item {
 		position: relative;
 		@media (min-width: $mobile) {
-			&:has(.menu__link:focus-visible, .menu__sub-link:focus-visible),
+			&:has(.menu__link:focus-visible, .menu__sub-link:focus-visible) {
+				.menu__wrapper {
+					opacity: 1;
+					visibility: visible;
+					pointer-events: all;
+					transform: translate(0, 0);
+				}
+				.menu__button {
+					&::before {
+						transform: rotate(-45deg);
+					}
+					&::after {
+						transform: rotate(45deg);
+					}
+				}
+			}
+		}
+		@media (min-width: $mobile) and (max-width: $tablet) {
 			&.--open {
 				.menu__wrapper {
 					opacity: 1;
@@ -61,6 +78,7 @@
 				}
 			}
 		}
+
 		@media (any-hover: hover) {
 			&:hover {
 				.menu__button {
@@ -132,6 +150,7 @@
 		}
 		@media (max-width: $mobile) {
 			min-width: toRem(150);
+			padding-top: toRem(10);
 		}
 	}
 	// .menu__sub-list
@@ -144,6 +163,9 @@
 	&__sub-item {
 		&:not(:last-child) {
 			margin-bottom: toRem(7);
+			@media (max-width: $mobile) {
+				margin-bottom: toRem(12);
+			}
 		}
 	}
 	// .menu__sub-link
@@ -168,9 +190,17 @@
 				display: none;
 			}
 		}
+
 		@media (max-width: $mobile) {
-			&:not(:last-child) {
-				margin-bottom: toRem(10);
+			&.--open {
+				.menu__button {
+					&::before {
+						transform: rotate(-45deg);
+					}
+					&::after {
+						transform: rotate(45deg);
+					}
+				}
 			}
 		}
 	}
@@ -199,10 +229,10 @@
 			right: toRem(2);
 			transform: rotate(-45deg);
 		}
+		@media (max-width: $mobile) {
+			transition-duration: 0.4s;
+		}
 	}
-}
-
-.menu {
 }
 
 //Burger Icon
