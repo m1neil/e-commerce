@@ -420,8 +420,10 @@ export function menuInit() {
 	if (document.querySelector(".icon-menu")) {
 		document.addEventListener("click", function (e) {
 			if (bodyLockStatus && e.target.closest('.icon-menu')) {
-				bodyLockToggle();
+				bodyLockToggle(300);
 				document.documentElement.classList.toggle("menu-open");
+				if (document.documentElement.classList.contains('menu-open'))
+					document.documentElement.classList.remove('search-show')
 			}
 		});
 	};

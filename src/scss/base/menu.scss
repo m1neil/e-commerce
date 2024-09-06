@@ -1,4 +1,7 @@
 .menu {
+	@media (min-width: $mobile) {
+		z-index: 1;
+	}
 	@media (max-width: $mobile) {
 		position: fixed;
 		width: 100%;
@@ -6,25 +9,13 @@
 		left: -100%;
 		top: 0;
 		overflow: auto;
-		padding: toRem(111) toRem(15) toRem(30);
-		transition: left 0.3s;
+		padding: calc(toRem(68) + var(--header-banner-height)) toRem(15) toRem(30);
+		transition:
+			left 0.3s,
+			padding-top 0.4s;
 		background-color: var(--bg-primary);
-		&::before {
-			content: "";
-			position: fixed;
-			width: 100%;
-			height: toRem(60);
-			left: -100%;
-			top: toRem(38);
-			transition: left 0.3s;
-			z-index: 2;
-			background-color: var(--bg-primary);
-		}
 		.menu-open & {
 			left: 0;
-			&::before {
-				left: 0;
-			}
 		}
 	}
 	// .menu__list
@@ -264,6 +255,9 @@
 		}
 		&::after {
 			bottom: 0;
+		}
+		&::before,
+		&::after {
 		}
 		span {
 			top: calc(50% - toRem(1));

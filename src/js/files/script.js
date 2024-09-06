@@ -2,29 +2,28 @@
 import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
-import { _slideToggle, _slideUp, _slideDown } from "./functions.js";
+import { _slideToggle, _slideUp, _slideDown, menuClose } from "./functions.js";
 
 window.addEventListener('load', windowLoaded)
 
 function windowLoaded() {
-	console.dir(document);
 	const isTouch = document.documentElement.classList.contains('touch')
 	const banner = document.querySelector('.banner-header')
 	let isTablet
 	const mediaTablet = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
 	mediaTablet.addEventListener('change', e => {
 		isTablet = e.matches
-
-
 	})
 	isTablet = mediaTablet.matches
 
 	if (banner) {
-		const isShowDiscount = sessionStorage.getItem('show-discount') ?
-			parseInt(sessionStorage.getItem('show-discount')) : 1
+		const isHideBanner = sessionStorage.getItem('hide-discount') ?
+			true : false
 
-		if (!isShowDiscount)
-			hideBanner(banner)
+		if (isHideBanner) {
+			document.documentElement.style.setProperty('--header-banner-height', '0rem')
+			_slideUp(banner, 400)
+		}
 	}
 
 	initMenuSpoller()
@@ -34,27 +33,37 @@ function windowLoaded() {
 		const targetElement = e.target
 
 		if (targetElement.closest('.banner-header__close')) {
-			sessionStorage.setItem('show-discount', 0)
-			hideBanner(targetElement.closest('.banner-header'))
+			document.documentElement.style.setProperty('--header-banner-height', '0rem')
+			_slideUp(targetElement.closest('.banner-header'), 400)
+			sessionStorage.setItem('hide-discount', true)
 		}
-
-		if (!document.documentElement.classList.contains('menu-open') &&
-			targetElement.closest('.main-header__link.--icon-search'))
-			document.documentElement.classList.toggle('search-show')
-		else if (!targetElement.closest('.header'))
-			document.documentElement.classList.remove('search-show')
 
 		// is touch actions and tablet
 		if (isTouch) {
+
+			if (targetElement.closest('.main-header__link.--icon-search')) {
+				document.documentElement.classList.toggle('search-show')
+				const openSubMenu = document.querySelector('.menu__item.--open')
+				if (openSubMenu)
+					openSubMenu.classList.remove('--open')
+				if (!isTablet && document.documentElement.classList.contains('menu-open'))
+					menuClose()
+
+			} else if (!targetElement.closest('.header'))
+				document.documentElement.classList.remove('search-show')
+
 			if (isTablet) {
 				if (targetElement.closest('[data-spoller-trigger]')) {
 					const parentBlock = targetElement.closest('[data-spoller-block]')
+					const openSubMenu = document.querySelector('[data-spoller-block].--open')
+					if (openSubMenu && openSubMenu !== parentBlock)
+						openSubMenu.classList.remove('--open')
+
 					parentBlock.classList.toggle('--open')
 
 					if (parentBlock.classList.contains('--open') &&
 						document.documentElement.classList.contains('search-show'))
 						document.documentElement.classList.remove('search-show')
-
 				} else if (!targetElement.closest('.menu__item')) {
 					const openSubMenu = document.querySelector('[data-spoller-block].--open')
 					if (openSubMenu)
@@ -71,34 +80,17 @@ function windowLoaded() {
 						titleSpoller.classList.toggle('--open')
 						_slideToggle(titleSpoller.nextElementSibling, 400)
 					}
-				} else if (!targetElement.closest('.menu__list')) {
+				} else if (!document.documentElement.classList.contains('menu-open')) {
 					const titles = document.querySelectorAll('.menu__title.--open')
 					if (titles.length)
 						titles.forEach(title => {
 							title.classList.remove('--open')
-							_slideUp(title.nextElementSibling)
+							_slideUp(title.nextElementSibling, 400)
 						})
 				}
 			}
-
-
-			if (document.documentElement.classList.contains('menu-open'))
-				document.documentElement.classList.remove('search-show')
 		}
 	}
-}
-
-function hideBanner(banner) {
-	banner.style.overflow = 'hidden'
-	banner.style.transitionProperty = 'padding-block, height'
-	banner.style.transitionDuration = '0.5s'
-	banner.style.height = `${banner.scrollHeight / 16}rem`
-	banner.offsetHeight
-	banner.style.height = 0
-	banner.style.paddingBlock = 0
-	setTimeout(() => {
-		banner.remove()
-	}, 500);
 }
 
 function initMenuSpoller() {
