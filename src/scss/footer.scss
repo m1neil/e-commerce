@@ -1,3 +1,213 @@
 //====================================================================================================
+.footer {
+	background-color: #f0f0f0;
+	// .footer__main
+	&__main {
+	}
+	// .footer__bottom
+	&__bottom {
+	}
+}
+.main-footer {
+	padding-top: toRem(140);
+	// .main-footer__container
+	&__container {
+		padding-bottom: toRem(50);
+		border-bottom: toRem(1) solid rgba(0, 0, 0, 0.1);
+		@media (min-width: $tablet) {
+			display: flex;
+		}
+		@include adaptiveValue("column-gap", 113, 20, 0, $containerWidth, 991.98);
+	}
+	// .main-footer__body
+	&__body {
+		flex: 0 0 toRem(248);
+		@media (max-width: $tablet) {
+			margin-bottom: toRem(24);
+		}
+	}
+	// .main-footer__logo
+	&__logo {
+		width: toRem(167);
+		&:not(:last-child) {
+			margin-bottom: toRem(25);
+		}
+		img {
+			width: 100%;
+		}
+		@media (max-width: $mobile) {
+			width: toRem(144);
+			margin-bottom: toRem(14);
+		}
+	}
+	// .main-footer__text
+	&__text {
+		&:not(:last-child) {
+			margin-bottom: toRem(35);
+			@media (max-width: $mobile) {
+				margin-bottom: toRem(20);
+			}
+		}
+	}
+	// .main-footer__social
+	&__social {
+	}
+	// .main-footer__menu
+	&__menu {
+		flex-grow: 1;
+	}
+}
+
+.social {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(12);
+	// .social__item
+	&__item {
+		flex-shrink: 0;
+	}
+	// .social__link
+	&__link {
+		width: toRem(28);
+		height: toRem(28);
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: toRem(1) solid rgba(0, 0, 0, 0.2);
+		font-size: toRem(12);
+		color: var(--bg-accent);
+		transition:
+			border-color 0.3s,
+			color 0.3s,
+			background-color 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: var(--bg-accent);
+				color: var(--text-inverse);
+			}
+		}
+	}
+}
+.menu-footer {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(auto, toRem(149)));
+	justify-content: space-between;
+	column-gap: toRem(30);
+	row-gap: toRem(24);
+	@media (max-width: $tablet) {
+		// grid-template-columns: repeat(3, minmax(auto, toRem(149)));
+		justify-content: start;
+	}
+	@media (max-width: $mobile) {
+		column-gap: toRem(50);
+		grid-template-columns: repeat(2, minmax(auto, toRem(149)));
+	}
+	@media (max-width: toEm(389.98)) {
+		column-gap: toRem(20);
+	}
+	// .menu-footer__column
+	&__column {
+	}
+	// .menu-footer__title
+	&__title {
+		color: var(--text-accent);
+		font-weight: 500;
+		line-height: 1.12; /* 112.5% */
+		letter-spacing: toRem(3);
+		text-transform: uppercase;
+		&:not(:last-child) {
+			margin-bottom: toRem(26);
+			@media (max-width: $mobile) {
+				margin-bottom: toRem(16);
+			}
+		}
+	}
+	// .menu-footer__list
+	&__list {
+	}
+	// .menu-footer__item
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: toRem(24);
+		}
+	}
+	// .menu-footer__link
+	&__link {
+		color: var(--text-primary);
+		line-height: 1.18;
+		@media (any-hover: hover) {
+			position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: toRem(1);
+				bottom: toRem(-1);
+				left: 0;
+				background-color: #00000099;
+				transition: width 0.3s;
+			}
+			&:hover {
+				&::before {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+.bottom-footer {
+	padding-block: toRem(20) toRem(80);
+	// .bottom-footer__container
+	&__container {
+		@media (min-width: toEm(631)) {
+			display: flex;
+			align-items: center;
+			column-gap: toRem(20);
+			justify-content: space-between;
+		}
+		@media (max-width: toEm(630)) {
+			text-align: center;
+		}
+	}
+	// .bottom-footer__copy
+	&__copy {
+		flex-shrink: 0;
+		color: var(--text-primary);
+		font-size: toRem(14);
+		@media (max-width: toEm(630)) {
+			&:not(:last-child) {
+				margin-bottom: toRem(16);
+			}
+		}
+	}
+	// .bottom-footer__payments
+	&__payments {
+	}
+}
+.payments {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(12);
+	justify-content: flex-end;
+	@media (max-width: toEm(630)) {
+		justify-content: center;
+	}
+	// .payments__item
+	&__item {
+		width: toRem(46);
+		height: toRem(30);
+		background-color: var(--bg-primary);
+		border: toRem(1) solid #d6dce5;
+		border-radius: toRem(5);
+		display: flex;
+		justify-content: center;
+		padding: toRem(5);
+		align-items: center;
+		img {
+			max-width: 100%;
+		}
+	}
+}
 
 //====================================================================================================

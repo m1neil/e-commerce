@@ -100,6 +100,10 @@
 		position: relative;
 		line-height: 1.2;
 		text-transform: capitalize;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(2);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
 		&::before {
 			content: "";
 			position: absolute;
@@ -122,6 +126,20 @@
 		@media (max-width: $mobile) {
 			font-size: toRem(22);
 		}
+	}
+
+	&__link {
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
+	}
+	&__sub-link {
+		&:focus-visible {
+			outline-color: var(--bg-inverse);
+		}
+	}
+
+	&__sub-link {
 	}
 
 	&__wrapper {
@@ -184,7 +202,6 @@
 			}
 		}
 
-		// ? Это кудлатит бабусю
 		@media (max-width: $mobile) {
 			&.--open {
 				.menu__button {

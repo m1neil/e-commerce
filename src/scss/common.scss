@@ -14,7 +14,7 @@
 			font-size: toRem(36);
 		}
 		@media (max-width: toEm(375)) {
-			font-size: toRem(30);
+			font-size: toRem(32);
 		}
 	}
 }
@@ -24,5 +24,88 @@
 	line-height: 1.37;
 	p:not(:last-child) {
 		margin-bottom: toRem(7);
+	}
+}
+
+//========================================================================================================================================================
+.card-product {
+	// .card-product__img
+	&__img {
+		display: block;
+		border-radius: toRem(20);
+		overflow: hidden;
+		background-color: #f0eeed;
+		aspect-ratio: 295 / 298;
+		&:not(:last-child) {
+			margin-bottom: toRem(16);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				img {
+					transform: scale(1.03);
+				}
+			}
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			transition: transform 0.3s;
+		}
+	}
+	// .card-product__title
+	&__title {
+		color: var(--text-accent);
+		font-size: toRem(20);
+		font-weight: 700;
+		text-transform: capitalize;
+		&:not(:last-child) {
+			margin-bottom: toRem(8);
+		}
+		a {
+			transition: color 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #022bc0;
+				}
+			}
+		}
+	}
+	// .card-product__rating
+	&__rating {
+		&:not(:last-child) {
+			margin-bottom: toRem(8);
+		}
+	}
+	// .card-product__price
+	&__price {
+	}
+	// .card-product__prices
+	&__prices {
+		display: flex;
+		align-items: center;
+		column-gap: toRem(10);
+	}
+	// .card-product__current-price
+	&__current-price,
+	&__old-price {
+		color: var(--text-accent);
+		font-size: toRem(24);
+		font-weight: 700;
+	}
+	// .card-product__old-price
+	&__old-price {
+		color: rgba(0, 0, 0, 0.4);
+		text-decoration: line-through;
+	}
+	// .card-product__discount
+	&__discount {
+		border-radius: toRem(62);
+		background-color: rgba(255, 51, 51, 0.1);
+		padding: toRem(8) toRem(14);
+		color: #f33;
+		font-size: toRem(12);
+		font-weight: 500;
+		text-align: center;
 	}
 }

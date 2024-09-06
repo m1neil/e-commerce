@@ -36,6 +36,13 @@
 		a {
 			font-weight: 500;
 			text-decoration: underline;
+			outline: toRem(2) solid transparent;
+			outline-offset: toRem(2);
+			border-radius: toRem(2);
+			transition: outline-color 0.3s;
+			&:focus-visible {
+				outline-color: var(--bg-inverse);
+			}
 			@media (any-hover: hover) {
 				&:hover {
 					text-decoration: none;
@@ -52,7 +59,14 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transition: transform 0.3s;
+		transition:
+			transform 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: var(--bg-inverse);
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				transform: rotate(90deg);
@@ -96,6 +110,13 @@
 		z-index: 2;
 		flex-shrink: 0;
 		width: toRem(160);
+		outline: toRem(2) solid transparent;
+		transition: outline-color 0.3s;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		img {
 			width: 100%;
 		}
@@ -138,6 +159,12 @@
 		align-items: center;
 		font-size: toRem(20);
 		color: var(--text-accent);
+		outline: toRem(2) solid transparent;
+		transition: outline-color 0.3s;
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		&::before {
 			transition: transform 0.3s;
 			will-change: transform;
@@ -220,6 +247,13 @@
 		top: 50%;
 		left: 0;
 		line-height: 0;
+		outline: toRem(2) solid transparent;
+		transition: outline-color 0.3s;
+		outline-offset: toRem(-2);
+		border-radius: toRem(62) 0 0 toRem(62);
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		&::before {
 			will-change: transform;
 			transition: transform 0.3s;

@@ -27,6 +27,7 @@ function windowLoaded() {
 	}
 
 	initMenuSpoller()
+	initRating()
 	document.addEventListener('click', documentActions)
 
 	function documentActions(e) {
@@ -158,4 +159,32 @@ function toggleShowSubMenu(buttons, hideOrShowContent, isAddTabindex = true) {
 		const content = button.parentElement.nextElementSibling
 		hideOrShowContent(content, 0)
 	})
+}
+
+function initRating() {
+	const ratingBlocks = document.querySelectorAll('[data-rating]')
+	if (!ratingBlocks.length) return
+	ratingBlocks.forEach(item => {
+		const value = item.dataset.rating.split('.')
+		const whole = value[0] ? parseInt(value[0]) : 5
+		let remainder = value[1] ? parseInt(value[1]) : 0
+		remainder = remainder > 10 ? remainder / 10 : remainder
+
+		const body = item.querySelector('.rating__body')
+		for (let numberStar = 0; numberStar < whole; numberStar++) {
+			body.append(getStar())
+		}
+
+		if (remainder) {
+			const width = 21 * remainder / 0.10 / 100
+			body.append(getStar(width))
+		}
+	})
+
+	function getStar(size = 21) {
+		const star = document.createElement('div')
+		star.classList.add('rating__star')
+		star.style.width = `${size / 16}rem`
+		return star
+	}
 }
