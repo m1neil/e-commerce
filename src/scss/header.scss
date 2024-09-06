@@ -48,25 +48,15 @@
 		flex-shrink: 0;
 		width: toRem(20);
 		height: toRem(20);
-		position: relative;
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			width: toRem(17);
-			height: toRem(1.5);
-			background-color: var(--bg-inverse);
-			border-radius: toRem(5);
-		}
-		&::before {
-			left: 50%;
-			top: toRem(10);
-			transform: translate(-50%, 0) rotate(-45deg);
-		}
-		&::after {
-			right: 50%;
-			bottom: toRem(9);
-			transform: translate(50%, 0) rotate(45deg);
+		font-size: toRem(13);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: transform 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				transform: rotate(90deg);
+			}
 		}
 	}
 }
@@ -159,12 +149,40 @@
 				}
 			}
 		}
-		&.--icon-search {
+		&--search {
 			display: none;
 			@media (max-width: $tablet) {
-				display: inline-flex;
+				display: block;
+				position: relative;
+				span {
+					line-height: 0;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					transition:
+						transform 0.3s,
+						opacity 0.3s;
+					&:first-child {
+					}
+					&:last-child {
+						opacity: 0;
+						transform: translate(-50%, -50%) scale(0.5);
+					}
+					.search-show & {
+						&:first-child {
+							transform: translate(-50%, -50%) scale(0.5);
+							opacity: 0;
+						}
+						&:last-child {
+							transform: translate(-50%, -50%) scale(1);
+							opacity: 1;
+						}
+					}
+				}
 			}
 		}
+
 		&.--icon-cart {
 			font-size: toRem(22);
 		}

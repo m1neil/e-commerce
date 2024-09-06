@@ -41,14 +41,13 @@ function windowLoaded() {
 		// is touch actions and tablet
 		if (isTouch) {
 
-			if (targetElement.closest('.main-header__link.--icon-search')) {
+			if (targetElement.closest('.main-header__link--search')) {
 				document.documentElement.classList.toggle('search-show')
 				const openSubMenu = document.querySelector('.menu__item.--open')
 				if (openSubMenu)
 					openSubMenu.classList.remove('--open')
-				if (!isTablet && document.documentElement.classList.contains('menu-open'))
+				if (document.documentElement.classList.contains('menu-open'))
 					menuClose()
-
 			} else if (!targetElement.closest('.header'))
 				document.documentElement.classList.remove('search-show')
 
