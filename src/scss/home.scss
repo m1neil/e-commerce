@@ -3,15 +3,28 @@
 	background-color: #f2f0f1;
 	// .promo__container
 	&__container {
-		display: flex;
-		justify-content: space-between;
-		column-gap: toRem(30);
+		@media (min-width: $mobile) {
+			display: flex;
+			justify-content: space-between;
+			column-gap: toRem(30);
+		}
+		@media (max-width: $mobile) {
+			display: grid;
+		}
 	}
 	// .promo__content
 	&__content {
-		flex: 0 1 toRem(600);
-		padding-bottom: toRem(30);
 		@include adaptiveValue("padding-top", 103, 30, 0, $containerWidth, 768);
+		@media (min-width: $mobile) {
+			flex: 0 1 toRem(600);
+			padding-bottom: toRem(30);
+		}
+		@media (max-width: $mobile) {
+			padding-top: toRem(40);
+		}
+		@media (max-width: toEm(389.98)) {
+			padding-top: toRem(30);
+		}
 		& > * {
 			margin-bottom: toRem(32);
 			@media (max-width: $tablet) {
@@ -42,9 +55,18 @@
 	&__picture {
 		padding-top: toRem(35);
 		position: relative;
-		flex: 0 1 toRem(620);
 		margin-right: toRem(-30);
-		align-self: flex-end;
+		@media (min-width: $mobile) {
+			flex: 0 1 toRem(620);
+			align-self: flex-end;
+		}
+		@media (max-width: $mobile) {
+			max-width: toRem(500);
+			justify-self: center;
+			margin-inline: toRem(-45) toRem(-30);
+		}
+		@media (max-width: toEm(500)) {
+		}
 	}
 	// .promo__decoration
 	&__decoration {
@@ -62,6 +84,10 @@
 			right: auto;
 			left: 0;
 			top: percent(280, 648);
+			@media (max-width: $mobile) {
+				top: percent(210, 648);
+				left: toRem(45);
+			}
 		}
 	}
 	// .promo__img
@@ -71,10 +97,20 @@
 }
 
 .info-promo {
-	display: flex;
-	row-gap: toRem(20);
+	@media (min-width: toEm(390)) {
+		display: flex;
+		row-gap: toRem(20);
+	}
 	@media (max-width: toEm(1250)) {
 		flex-wrap: wrap;
+	}
+	@media (max-width: toEm(560)) {
+		justify-content: center;
+		max-width: toRem(400);
+		margin: 0 auto;
+	}
+	@media (max-width: toEm(389.98)) {
+		text-align: center;
 	}
 	// .info-promo__item
 	&__item {
@@ -89,16 +125,26 @@
 			padding-left: 0;
 		}
 		&:nth-child(2) {
-			@media (max-width: toEm(1250)) {
+			@media (max-width: toEm(1250)) and (min-width: $mobile), (max-width: toEm(560)) {
 				padding-right: 0;
 				border-right: none;
 			}
 		}
 		&:last-child {
 			padding-right: 0;
-			@media (max-width: toEm(1250)) {
+			@media (max-width: toEm(1250)) and (min-width: $mobile) {
 				flex-basis: 100%;
 				padding-left: 0;
+			}
+
+			@media (max-width: toEm(560)) {
+				padding-left: 0;
+			}
+		}
+		@media (max-width: toEm(389.98)) {
+			padding-inline: 0;
+			&:not(:last-child) {
+				margin-bottom: toRem(20);
 			}
 		}
 	}

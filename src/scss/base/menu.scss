@@ -51,7 +51,7 @@
 				}
 			}
 		}
-		@media (min-width: $mobile) and (max-width: $tablet) {
+		@media (min-width: $mobile) {
 			&.--open {
 				.menu__wrapper {
 					opacity: 1;
@@ -172,9 +172,11 @@
 		column-gap: toRem(4);
 		a {
 			@media (min-width: $tablet) {
-				z-index: 1;
-				margin-right: toRem(-20);
-				padding-right: toRem(20);
+				html:not(.touch) & {
+					z-index: 1;
+					margin-right: toRem(-20);
+					padding-right: toRem(20);
+				}
 			}
 
 			&::before {

@@ -193,17 +193,19 @@
 	position: relative;
 	@media (max-width: $tablet) {
 		position: absolute;
-		top: 100%;
+		top: -100%;
 		left: 0;
 		background-color: #fff;
 		width: 100%;
 		padding: toRem(5) toRem(15) toRem(15);
 		visibility: hidden;
-		transition: all 0.3s;
-		transform: translateY(-100%);
+		transition:
+			top 0.3s,
+			transform 0.3s,
+			visibility 0.3s;
 		.search-show & {
+			top: 100%;
 			visibility: visible;
-			transform: translate(0, 0);
 		}
 	}
 	// .form-main-header__input

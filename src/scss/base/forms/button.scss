@@ -22,7 +22,10 @@
 			}
 		}
 	}
+
 	&--fw {
-		width: 100%;
+		@media (max-width: toEm(560)) {
+			width: 100%;
+		}
 	}
 }

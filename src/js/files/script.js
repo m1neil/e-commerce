@@ -35,7 +35,7 @@ function windowLoaded() {
 		if (targetElement.closest('.banner-header__close')) {
 			document.documentElement.style.setProperty('--header-banner-height', '0rem')
 			_slideUp(targetElement.closest('.banner-header'), 400)
-			sessionStorage.setItem('hide-discount', true)
+			// sessionStorage.setItem('hide-discount', true) // ! Не забудь раскоментить
 		}
 
 		// is touch actions and tablet

@@ -7,6 +7,15 @@
 	// .title--main
 	&--main {
 		@include adaptiveValue("font-size", 64, 36, 0, $containerWidth, 700);
+		@media (max-width: $mobile) {
+			font-size: toRem(45);
+		}
+		@media (max-width: $mobileSmall) {
+			font-size: toRem(36);
+		}
+		@media (max-width: toEm(375)) {
+			font-size: toRem(30);
+		}
 	}
 }
 

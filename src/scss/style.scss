@@ -23,6 +23,13 @@ $fontAccent: "IntegralCF";
 // Палітра кольорів
 @import "base/colors-palette";
 
+:root {
+	--header-banner-height: 2.375rem; // 38px
+	@media (max-width: toEm(360)) {
+		--header-banner-height: 2.625rem; // 45px
+	}
+}
+
 // Налаштування адаптивної сітки ===============================================================================================================================================================================================================================================================================================
 
 // Мінімальна ширина сторінки
@@ -83,6 +90,11 @@ body {
 	// Притискаємо footer
 	> main {
 		flex: 1 1 auto;
+		transition: padding-top 0.4s;
+		padding-top: calc(toRem(96) + var(--header-banner-height));
+		@media (max-width: $tablet) {
+			padding-top: calc(toRem(60) + var(--header-banner-height));
+		}
 	}
 	// Фікс для слайдерів
 	> * {
@@ -135,13 +147,6 @@ body {
 				padding: 0 toRem(math.div($containerPadding, 2));
 			}
 		}
-	}
-}
-
-:root {
-	--header-banner-height: 2.375rem; // 38px
-	@media (max-width: toEm(370)) {
-		--header-banner-height: 2.625rem; // 45px
 	}
 }
 
