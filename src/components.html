@@ -1,30 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 	@@include('html/_head.htm',{
-	"title":"Main - E-commerce"
+	"title":"Components"
 	})
 	<body>
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
 				<div class="components">
-					<div class="components__container">
-						<article class="card-product">
-							<a href="#" class="card-product__img">
-								<img src="@img/products/01.jpg" alt="Image">
-							</a>
-							<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
-							<div data-rating="4.5" class="card-product__rating rating">
-								<div class="rating__body"></div>
-								<div class="rating__value">4.5/<span>5</span></div>
+					<!-- * Карточка товара -->
+					<!-- <article class="card-product">
+						<a href="#" class="card-product__img">
+							<img src="@img/products/01.jpg" alt="Image">
+						</a>
+						<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
+						<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+						<div class="card-product__prices prices">
+							<div class="prices__current-price">$120</div>
+							<div class="prices__old-price">$260</div>
+							<div class="prices__discount">-20%</div>
+						</div>
+					</article> -->
+					<!-- * Блок одежды -->
+					<!-- <section class="block-cloth">
+						<div class="block-cloth__container">
+							<h2 class="block-cloth__title title title--center">NEW ARRIVALS</h2>
+							<div class="block-cloth__items">
+								<article class="block-cloth__card card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/01.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
+									<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices">
+										<div class="card-product__current-price">$120</div>
+									</div>
+								</article>
+								<article class="block-cloth__card card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/02.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">SKINNY FIT JEANS</a></h3>
+									<div data-rating-size="17" data-rating="3.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices">
+										<div class="card-product__current-price">$120</div>
+										<div class="card-product__old-price">$260</div>
+										<div class="card-product__discount">-20%</div>
+									</div>
+								</article>
+								<article class="block-cloth__card card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/03.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">CHECKERED SHIRT</a></h3>
+									<div data-rating-size="17" data-rating="5" class="card-product__rating rating"></div>
+									<div class="card-product__prices">
+										<div class="card-product__current-price">$180</div>
+									</div>
+								</article>
+								<article class="block-cloth__card card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/04.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">SLEEVE STRIPED T-SHIRT</a></h3>
+									<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices">
+										<div class="card-product__current-price">$130</div>
+										<div class="card-product__old-price">$160</div>
+										<div class="card-product__discount">-30%</div>
+									</div>
+								</article>
 							</div>
-							<div class="card-product__prices">
-								<div class="card-product__current-price">$120</div>
-								<div class="card-product__old-price">$260</div>
-								<div class="card-product__discount">-20%</div>
+							<button type="button" class="block-cloth__all button button--bg-white button--fw button--border">View All</button>
+						</div>
+					</section> -->
+					<!-- * Отзыв -->
+					<!-- <article class="item-review">
+						<div class="item-review__header">
+							<div data-rating-size="21" data-rating="4.5" class="item-review__rating rating rating--big"></div>
+							<div class="item-review__actions actions-review">
+								<button type="button" class="actions-review__button --icon-dots"></button>
+								<div class="actions-review__items">
+									<button type="button" class="actions-review__item">Answer</button>
+									<button type="button" class="actions-review__item">Edit</button>
+									<button type="button" class="actions-review__item actions-review__item--delete">Delete</button>
+								</div>
 							</div>
-						</article>
-					</div>
+						</div>
+						<h6 class="item-review__user">Samantha <span class="--icon-trust">D.</span></h6>
+						<div class="item-review__text text">
+							<p>
+								"I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt."
+							</p>
+						</div>
+						<div class="item-review__date">Posted on <time datetime="2023-08-14">August 14, 2023</time></div>
+					</article> -->
+					<!-- * Форма подписки -->
+					<!-- <section class="subscribe">
+						<div class="subscribe__container">
+							<div class="subscribe__body">
+								<h2 class="subscribe__title title title--small title--color-white">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+								<form data-dev action="#" method="POST" class="subscribe__form form">
+									<input type="text" name="form[email]" data-required="email" data-error="Not correct email" placeholder="E-mail" class="form__input input">
+									<button type="submit" class="form__button button button--bg-white">Subscribe to Newsletter</button>
+								</form>
+							</div>
+						</div>
+					</section> -->
 				</div>
 			</main>
 			@@include('html/_footer.htm',{})

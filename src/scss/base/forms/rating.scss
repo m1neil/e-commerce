@@ -121,17 +121,20 @@
 	// .rating__star
 	&__star {
 		position: relative;
-		width: toRem(21);
-		height: toRem(21);
 		overflow: hidden;
 		&::before {
 			content: "";
 			position: absolute;
-			width: toRem(21);
-			height: 100%;
+			width: toRem(17);
+			height: toRem(17);
 			top: 0;
 			left: 0;
-			background: url("@img/icons/star.svg") center / toRem(21) no-repeat;
+			background: url("@img/icons/star.svg") center / toRem(17) no-repeat;
+			.rating--big & {
+				width: toRem(21);
+				height: toRem(21);
+				background-size: toRem(21);
+			}
 		}
 	}
 	// .rating__value
@@ -140,6 +143,9 @@
 		font-size: toRem(14);
 		span {
 			color: rgba(0, 0, 0, 0.6);
+		}
+		@media (max-width: $mobile) {
+			font-size: toRem(12);
 		}
 	}
 }

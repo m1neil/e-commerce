@@ -90,8 +90,8 @@ body {
 	// Притискаємо footer
 	> main {
 		flex: 1 1 auto;
-		transition: padding-top 0.4s;
 		padding-top: calc(toRem(96) + var(--header-banner-height));
+		transition: padding-top 0.4s;
 		@media (max-width: $tablet) {
 			padding-top: calc(toRem(60) + var(--header-banner-height));
 		}
@@ -169,3 +169,4 @@ body {
 
 // Підключення стилів окремих сторінок
 @import "home";
+@import "product-page";

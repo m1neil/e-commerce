@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	@@include('html/_head.htm',{
+	"title":"Product - E-commerce"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{
+			"classList":"header header--border"
+			})
+			<main class="product">
+				<div class="product__navigation navigation">
+					<div class="navigation__container">
+						<ul class="navigation__list">
+							<li class="navigation__item">
+								<a href="#" class="navigation__link --icon-arrow-right">Home</a>
+							</li>
+							<li class="navigation__item">
+								<a href="#" class="navigation__link --icon-arrow-right">Shop</a>
+							</li>
+							<li class="navigation__item">
+								<a href="#" class="navigation__link --icon-arrow-right">Men</a>
+							</li>
+							<li class="navigation__item">
+								T-shirts
+							</li>
+						</ul>
+					</div>
+				</div>
+				<section class="product__about about-product">
+					<div class="about-product__container">
+						<div class="about-product__preview preview-product">
+							<div class="preview-product__main-slider main-slider swiper">
+								<div class="main-slider__wrapper swiper-wrapper">
+									<div class="main-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+									<div class="main-slider__slide swiper-slide">
+										<img src="@img/product-page/02.jpg" alt="Image">
+									</div>
+									<div class="main-slider__slide swiper-slide">
+										<img src="@img/product-page/03.jpg" alt="Image">
+									</div>
+								</div>
+							</div>
+							<div class="preview-product__sub-slider sub-slider swiper">
+								<div class="sub-slider__wrapper swiper-wrapper">
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="about-product__content">
+							<h1 class="about-product__title title">One Life Graphic T-shirt</h1>
+							<div data-rating-size="21" data-rating="4.5" class="about-product__rating rating rating--big"></div>
+							<div class="about-product__prices prices">
+								<div class="prices__current-price">$120</div>
+								<div class="prices__old-price">$260</div>
+								<div class="prices__discount">-20%</div>
+							</div>
+							<div class="about-product__text text">
+								<p>
+									This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.
+								</p>
+							</div>
+							<form action="#" class="about-product__form form-product">
+								<fieldset class="form-product__line">
+									<legend class="form-product__title">Select Colors</legend>
+									<label class="form-product__color --icon-check-mark">
+										<img src="@img/product-page/colors/01.svg" alt="Brown color">
+										<input type="radio" value="brown" name="color">
+									</label>
+									<label class="form-product__color --icon-check-mark">
+										<img src="@img/product-page/colors/02.svg" alt="Brown color">
+										<input type="radio" value="dark-green" name="color">
+									</label>
+									<label class="form-product__color --icon-check-mark">
+										<img src="@img/product-page/colors/03.svg" alt="Brown color">
+										<input type="radio" value="dark-blue" name="color">
+									</label>
+								</fieldset>
+								<fieldset class="form-product__line">
+									<legend class="form-product__title">Choose Size</legend>
+									<label class="form-product__size --icon-check-mark">
+										Small
+										<input type="radio" value="Small" name="size">
+									</label>
+									<label class="form-product__size --icon-check-mark">
+										Medium
+										<input type="radio" value="Medium" name="size">
+									</label>
+									<label class="form-product__size --icon-check-mark">
+										Large
+										<input type="radio" value="Large" name="size">
+									</label>
+									<label class="form-product__size --icon-check-mark">
+										X-Large
+										<input type="radio" value="X-Large" name="size">
+									</label>
+								</fieldset>
+								<div class="form-product__bottom">
+									<div data-quantity class="quantity">
+										<button data-quantity-minus type="button" class="quantity__button quantity__button--minus"></button>
+										<div class="quantity__input">
+											<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
+										</div>
+										<button data-quantity-plus type="button" class="quantity__button quantity__button--plus"></button>
+									</div>
+									<button type="submit" class="form-product__button button">Add to Cart</button>
+								</div>
+							</form>
+							form
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_js.htm',{})
+	</body>
+</html>

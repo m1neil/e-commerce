@@ -19,7 +19,6 @@ function windowLoaded() {
 	if (banner) {
 		const isHideBanner = sessionStorage.getItem('hide-discount') ?
 			true : false
-
 		if (isHideBanner) {
 			document.documentElement.style.setProperty('--header-banner-height', '0rem')
 			_slideUp(banner, 400)
@@ -39,14 +38,20 @@ function windowLoaded() {
 			// sessionStorage.setItem('hide-discount', true) // ! Не забудь раскоментить
 		}
 
+		if (targetElement.closest('.actions-review__button')) {
+			const wrapper = targetElement.closest('.actions-review')
+			wrapper.classList.toggle('--open')
+			const activeButton = document.querySelector('.actions-review.--open')
+			if (activeButton && activeButton !== wrapper)
+				activeButton.classList.remove('--open')
+		}
+
 		// is touch actions and tablet
 		if (isTouch) {
-
 			if (targetElement.closest('.main-header__link--search')) {
 				document.documentElement.classList.toggle('search-show')
 				const openSubMenu = document.querySelector('.menu__item.--open')
-				if (openSubMenu)
-					openSubMenu.classList.remove('--open')
+				if (openSubMenu) openSubMenu.classList.remove('--open')
 				if (document.documentElement.classList.contains('menu-open'))
 					menuClose()
 			} else if (!targetElement.closest('.header'))
@@ -55,26 +60,23 @@ function windowLoaded() {
 			if (isTablet) {
 				if (targetElement.closest('[data-spoller-trigger]')) {
 					const parentBlock = targetElement.closest('[data-spoller-block]')
+					parentBlock.classList.toggle('--open')
 					const openSubMenu = document.querySelector('[data-spoller-block].--open')
 					if (openSubMenu && openSubMenu !== parentBlock)
 						openSubMenu.classList.remove('--open')
-
-					parentBlock.classList.toggle('--open')
-
 					if (parentBlock.classList.contains('--open') &&
 						document.documentElement.classList.contains('search-show'))
 						document.documentElement.classList.remove('search-show')
 				} else if (!targetElement.closest('.menu__item')) {
 					const openSubMenu = document.querySelector('[data-spoller-block].--open')
-					if (openSubMenu)
-						openSubMenu.classList.remove('--open')
+					if (openSubMenu) openSubMenu.classList.remove('--open')
 				}
 			}
 
 			if (!isTablet) {
 				if (targetElement.closest('[data-spoller-trigger]')) {
 					const spollerWrapper = targetElement.closest('[data-spoller-block]')
-					if (!spollerWrapper.querySelector('_slide')) {
+					if (!spollerWrapper.querySelector('._slide')) {
 						const spollerButton = targetElement.closest('[data-spoller-trigger]')
 						const titleSpoller = spollerButton.parentElement
 						titleSpoller.classList.toggle('--open')
@@ -82,11 +84,12 @@ function windowLoaded() {
 					}
 				} else if (!document.documentElement.classList.contains('menu-open')) {
 					const titles = document.querySelectorAll('.menu__title.--open')
-					if (titles.length)
+					if (titles.length) {
 						titles.forEach(title => {
 							title.classList.remove('--open')
 							_slideUp(title.nextElementSibling, 400)
 						})
+					}
 				}
 			}
 		}
@@ -96,7 +99,8 @@ function windowLoaded() {
 function initMenuSpoller() {
 	const spollers = document.querySelectorAll('[data-spoller-block]')
 	if (!spollers.length) return
-	const mediaSpollers = Array.from(spollers).filter(spoller => spoller.dataset.spollerBlock.split(',')[0])
+	const mediaSpollers = Array.from(spollers)
+		.filter(spoller => spoller.dataset.spollerBlock.split(',')[0])
 
 	if (mediaSpollers.length) {
 		const breakpoints = []
@@ -104,7 +108,6 @@ function initMenuSpoller() {
 			const options = block.dataset.spollerBlock.split(',')
 			const value = options[0] ? options[0] : 767.98
 			const typeMedia = options[1] ? options[1] : 'max'
-
 			breakpoints.push({
 				item: block,
 				value,
@@ -164,27 +167,40 @@ function toggleShowSubMenu(buttons, hideOrShowContent, isAddTabindex = true) {
 function initRating() {
 	const ratingBlocks = document.querySelectorAll('[data-rating]')
 	if (!ratingBlocks.length) return
+
 	ratingBlocks.forEach(item => {
 		const value = item.dataset.rating.split('.')
 		const whole = value[0] ? parseInt(value[0]) : 5
 		let remainder = value[1] ? parseInt(value[1]) : 0
 		remainder = remainder > 10 ? remainder / 10 : remainder
+		const ratingSize = item.dataset.ratingSize ? parseInt(item.dataset.ratingSize) : 17
 
-		const body = item.querySelector('.rating__body')
+		const body = document.createElement('div')
+		body.classList.add('rating__body')
+
 		for (let numberStar = 0; numberStar < whole; numberStar++) {
-			body.append(getStar())
+			body.append(getStar(ratingSize, ratingSize))
 		}
 
 		if (remainder) {
-			const width = 21 * remainder / 0.10 / 100
-			body.append(getStar(width))
+			const width = ratingSize * remainder / 0.10 / 100
+			body.append(getStar(width, ratingSize))
+		}
+
+		item.append(body)
+
+		if (item.hasAttribute('data-rating-value')) {
+			item.insertAdjacentHTML('beforeend', `
+				<div class="rating__value">${value[0]}.${value[1] || '0'}/<span>5</span></div>
+			`)
 		}
 	})
 
-	function getStar(size = 21) {
+	function getStar(width = 17, height = 17) {
 		const star = document.createElement('div')
 		star.classList.add('rating__star')
-		star.style.width = `${size / 16}rem`
+		star.style.width = `${width / 16}rem`
+		star.style.height = `${height / 16}rem`
 		return star
 	}
 }

@@ -10,6 +10,9 @@
 }
 .main-footer {
 	padding-top: toRem(140);
+	@media (max-width: $mobile) {
+		padding-top: toRem(205);
+	}
 	// .main-footer__container
 	&__container {
 		padding-bottom: toRem(50);
@@ -29,6 +32,13 @@
 	// .main-footer__logo
 	&__logo {
 		width: toRem(167);
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(4);
+		border-radius: toRem(2);
+		transition: outline-color 0.3s;
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		&:not(:last-child) {
 			margin-bottom: toRem(25);
 		}
@@ -58,7 +68,7 @@
 	}
 }
 
-.social {
+.socials {
 	display: flex;
 	flex-wrap: wrap;
 	gap: toRem(12);
@@ -80,7 +90,13 @@
 		transition:
 			border-color 0.3s,
 			color 0.3s,
-			background-color 0.3s;
+			background-color 0.3s,
+			outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: var(--bg-accent);
@@ -136,6 +152,13 @@
 	&__link {
 		color: var(--text-primary);
 		line-height: 1.18;
+		transition: outline-color 0.3s;
+		outline: toRem(2) solid transparent;
+		outline-offset: toRem(3);
+		border-radius: toRem(2);
+		&:focus-visible {
+			outline-color: var(--bg-accent);
+		}
 		@media (any-hover: hover) {
 			position: relative;
 			&::before {

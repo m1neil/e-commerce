@@ -5,6 +5,20 @@
 	width: 100%;
 	z-index: 50;
 	background-color: var(--bg-primary);
+	&--border {
+		.main-header__container {
+			position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				width: calc(100% - toRem(30));
+				height: toRem(1);
+				bottom: 0;
+				left: toRem(15);
+				background-color: rgba(0, 0, 0, 0.1);
+			}
+		}
+	}
 	// .header__banner
 	&__banner {
 	}
@@ -30,6 +44,7 @@
 		font-size: toRem(14);
 		text-align: center;
 		line-height: 1.2;
+		padding-left: toRem(30);
 		@media (max-width: toEm(600)) {
 			font-size: toRem(12);
 		}
@@ -242,22 +257,22 @@
 	// .form-main-header__submit
 	&__submit {
 		position: absolute;
-		width: toRem(48);
+		width: toRem(40);
 		height: toRem(48);
 		top: 50%;
-		left: 0;
+		left: toRem(7);
 		line-height: 0;
 		outline: toRem(2) solid transparent;
 		transition: outline-color 0.3s;
 		outline-offset: toRem(-2);
-		border-radius: toRem(62) 0 0 toRem(62);
+		border-radius: toRem(48) 0 0 toRem(48);
 		&:focus-visible {
 			outline-color: var(--bg-accent);
 		}
 		&::before {
 			will-change: transform;
 			transition: transform 0.3s;
-			font-size: toRem(20);
+			font-size: toRem(22);
 		}
 		@media (min-width: $mobile) {
 			transform: translate(0, -50%);
