@@ -254,6 +254,25 @@ export function formQuantity() {
 			targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]').value = value;
 		}
 	});
+
+	const quantities = document.querySelectorAll('[data-quantity]')
+	if (!quantities.length) return
+	quantities.forEach(block => {
+		const input = block.querySelector('[data-quantity-value]')
+		input.addEventListener('input', e => {
+			const value = e.target.value
+			if (value.match(/\D/))
+				e.target.value = value.replace(/\D/, '')
+		})
+		input.addEventListener('focusout', e => {
+			const value = parseInt(e.target.value)
+			if (!value) {
+				const minValue = e.target.dataset.quantityMin ?
+					e.target.dataset.quantityMin : 1
+				e.target.value = minValue
+			}
+		})
+	})
 }
 
 /*

@@ -196,11 +196,12 @@ function initRating() {
 		}
 	})
 
-	function getStar(width = 17, height = 17) {
+	function getStar(width = 17, height = 17, initSize = height) {
 		const star = document.createElement('div')
 		star.classList.add('rating__star')
 		star.style.width = `${width / 16}rem`
 		star.style.height = `${height / 16}rem`
+		star.insertAdjacentHTML('beforeend', `<img style="width: ${initSize / 16}rem; height: ${initSize / 16}rem; object-fit: contain" src="img/icons/star.svg">`)
 		return star
 	}
 }

@@ -139,6 +139,9 @@
 		color: var(--text-accent);
 		font-size: toRem(24);
 		font-weight: 700;
+		.prices--fz-big & {
+			font-size: toRem(32);
+		}
 		@media (max-width: toEm(600)) {
 			font-size: toRem(20);
 		}
@@ -157,6 +160,10 @@
 		font-size: toRem(12);
 		font-weight: 500;
 		text-align: center;
+		.prices--fz-big & {
+			padding-block: toRem(9);
+			font-size: toRem(16);
+		}
 		@media (max-width: toEm(600)) {
 			font-size: toRem(10);
 			padding: toRem(5) toRem(8);
@@ -488,6 +495,7 @@
 	}
 	// .navigation__item
 	&__item {
+		flex-shrink: 0;
 		color: var(--text-accent);
 	}
 	// .navigation__link

@@ -1,30 +1,5 @@
 .swiper {
 	overflow: hidden;
-	@media (min-width: $pc) {
-		overflow: visible;
-		position: relative;
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			width: 100vw;
-			height: 100%;
-			background-color: rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(0.125rem);
-			z-index: 2;
-		}
-		&::before {
-			left: calc(100% + 1.25rem);
-		}
-		&::after {
-			right: calc(100% + 1.25rem);
-		}
-	}
-	@media (max-width: $pc) {
-		margin-inline: toRem(-15);
-		padding-inline: toRem(15);
-	}
 }
 .swiper-initialized {
 	touch-action: pan-y;
@@ -61,4 +36,32 @@
 }
 .swiper-button-lock {
 	display: none !important;
+}
+
+.reviews__slider {
+	@media (min-width: $pc) {
+		overflow: visible;
+		position: relative;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			width: 100vw;
+			height: 100%;
+			background-color: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(0.125rem);
+			z-index: 2;
+		}
+		&::before {
+			left: calc(100% + 1.25rem);
+		}
+		&::after {
+			right: calc(100% + 1.25rem);
+		}
+	}
+	@media (max-width: $pc) {
+		margin-inline: toRem(-15);
+		padding-inline: toRem(15);
+	}
 }

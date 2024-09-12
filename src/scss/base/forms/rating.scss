@@ -122,20 +122,20 @@
 	&__star {
 		position: relative;
 		overflow: hidden;
-		&::before {
-			content: "";
-			position: absolute;
-			width: toRem(17);
-			height: toRem(17);
-			top: 0;
-			left: 0;
-			background: url("@img/icons/star.svg") center / toRem(17) no-repeat;
-			.rating--big & {
-				width: toRem(21);
-				height: toRem(21);
-				background-size: toRem(21);
-			}
-		}
+		// &::before {
+		// 	content: "";
+		// 	position: absolute;
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	top: 0;
+		// 	left: 0;
+		// 	background: url("@img/icons/star.svg") center / toRem(17) no-repeat;
+		// 	.rating--big & {
+		// 		width: toRem(21);
+		// 		height: toRem(21);
+		// 		background-size: toRem(21);
+		// 	}
+		// }
 	}
 	// .rating__value
 	&__value {

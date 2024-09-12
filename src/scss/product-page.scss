@@ -10,35 +10,61 @@
 .about-product {
 	// .about-product__container
 	&__container {
+		display: flex;
+		column-gap: toRem(30);
+		align-items: flex-start;
+		justify-content: space-between;
 	}
 	// .about-product__preview
 	&__preview {
+		min-width: 0;
+		flex: 0 1 toRem(610);
 	}
 	// .about-product__content
 	&__content {
+		flex: 0 1 toRem(600);
+		padding-top: toRem(5);
+		& > * {
+			margin-bottom: toRem(19);
+		}
+		& > *:last-child {
+			margin-bottom: 0;
+		}
 	}
 	// .about-product__title
 	&__title {
 	}
 	// .about-product__rating
 	&__rating {
+		.rating__body {
+			column-gap: toRem(7);
+		}
+		.rating__value {
+			font-size: toRem(16);
+		}
 	}
 	// .about-product__prices
 	&__prices {
+		column-gap: toRem(12);
 	}
 	// .about-product__text
 	&__text {
+		margin-bottom: toRem(18);
 	}
 	// .about-product__form
 	&__form {
 	}
 }
 .preview-product {
-	// .preview-product__main-slider
-	&__main-slider {
-	}
+	display: flex;
+	column-gap: toRem(14);
 	// .preview-product__sub-slider
 	&__sub-slider {
+		flex: 0 1 toRem(152);
+	}
+	// .preview-product__main-slider
+	&__main-slider {
+		flex: 0 1 toRem(444);
 	}
 }
 
@@ -48,6 +74,15 @@
 	}
 	// .main-slider__slide
 	&__slide {
+		aspect-ratio: 444 / 530;
+		border-radius: toRem(20);
+		overflow: hidden;
+		background-color: #f0eeed;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 }
 
@@ -57,26 +92,147 @@
 	}
 	// .sub-slider__slide
 	&__slide {
+		aspect-ratio: 152 / 167;
+		background-color: #f0eeed;
+		border-radius: toRem(20);
+		overflow: hidden;
+		position: relative;
+		cursor: pointer;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: toRem(20);
+			border: toRem(1) solid transparent;
+			transition: border-color 0.3s;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-position: cover;
+		}
+		&.swiper-slide-thumb-active {
+			&::before {
+				border-color: var(--bg-accent);
+			}
+		}
 	}
 }
 
 .form-product {
 	// .form-product__line
 	&__line {
+		padding-block: toRem(21) toRem(23);
+		border-top: toRem(1) solid rgba(0, 0, 0, 0.1);
+		&:last-child {
+			padding-bottom: 0;
+		}
+		&--flex {
+			display: flex;
+			column-gap: toRem(20);
+			padding-top: toRem(23);
+		}
 	}
 	// .form-product__title
 	&__title {
+		color: var(--text-primary);
+		&:not(:last-child) {
+			margin-bottom: toRem(14);
+		}
+	}
+	// .form-product__colors
+	&__colors {
+		display: flex;
+		gap: toRem(16);
+		flex-wrap: wrap;
 	}
 	// .form-product__color
 	&__color {
+		width: toRem(37);
+		aspect-ratio: 1;
+		flex-shrink: 0;
+		position: relative;
+		line-height: 0;
+		cursor: pointer;
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: toRem(13);
+			z-index: 1;
+			transition: opacity 0.3s;
+			opacity: 0;
+			color: var(--text-inverse);
+		}
+		&:has(input:checked) {
+			&::before {
+				opacity: 1;
+			}
+		}
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		input {
+			width: 100%;
+			height: 100%;
+			appearance: none;
+		}
+	}
+	// .form-product__sizes
+	&__sizes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: toRem(12);
 	}
 	// .form-product__size
 	&__size {
+		position: relative;
+		color: var(--text-primary);
+		border-radius: toRem(62);
+		background-color: #f0f0f0;
+		padding: toRem(15) toRem(24);
+		transition:
+			background-color 0.3s,
+			color 0.3s;
+		cursor: pointer;
+		&:has(input:checked) {
+			background-color: var(--bg-accent);
+			color: var(--text-inverse);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.6);
+				color: var(--text-inverse);
+			}
+		}
+		input {
+			position: absolute;
+			width: 0;
+			height: 0;
+			top: 0;
+			left: 0;
+			appearance: none;
+		}
 	}
-	// .form-product__bottom
-	&__bottom {
+	// .form-product__quantity
+	&__quantity {
+		width: auto;
+		flex: 0 1 toRem(170);
+		flex-shrink: 1;
+		min-width: toRem(110);
 	}
 	// .form-product__button
 	&__button {
+		flex-grow: 1;
 	}
 }

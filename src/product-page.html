@@ -30,6 +30,22 @@
 				<section class="product__about about-product">
 					<div class="about-product__container">
 						<div class="about-product__preview preview-product">
+							<div class="preview-product__sub-slider sub-slider swiper">
+								<div class="sub-slider__wrapper swiper-wrapper">
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/02.jpg" alt="Image">
+									</div>
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/03.jpg" alt="Image">
+									</div>
+									<div class="sub-slider__slide swiper-slide">
+										<img src="@img/product-page/01.jpg" alt="Image">
+									</div>
+								</div>
+							</div>
 							<div class="preview-product__main-slider main-slider swiper">
 								<div class="main-slider__wrapper swiper-wrapper">
 									<div class="main-slider__slide swiper-slide">
@@ -41,29 +57,19 @@
 									<div class="main-slider__slide swiper-slide">
 										<img src="@img/product-page/03.jpg" alt="Image">
 									</div>
-								</div>
-							</div>
-							<div class="preview-product__sub-slider sub-slider swiper">
-								<div class="sub-slider__wrapper swiper-wrapper">
-									<div class="sub-slider__slide swiper-slide">
-										<img src="@img/product-page/01.jpg" alt="Image">
-									</div>
-									<div class="sub-slider__slide swiper-slide">
-										<img src="@img/product-page/01.jpg" alt="Image">
-									</div>
-									<div class="sub-slider__slide swiper-slide">
+									<div class="main-slider__slide swiper-slide">
 										<img src="@img/product-page/01.jpg" alt="Image">
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="about-product__content">
-							<h1 class="about-product__title title">One Life Graphic T-shirt</h1>
-							<div data-rating-size="21" data-rating="4.5" class="about-product__rating rating rating--big"></div>
-							<div class="about-product__prices prices">
-								<div class="prices__current-price">$120</div>
-								<div class="prices__old-price">$260</div>
-								<div class="prices__discount">-20%</div>
+							<h1 class="about-product__title title title--small">One Life Graphic T-shirt</h1>
+							<div data-rating-size="24" data-rating="4.5" data-rating-value class="about-product__rating rating rating--big"></div>
+							<div class="about-product__prices prices prices--fz-big">
+								<div class="prices__current-price">$260</div>
+								<div class="prices__old-price">$300</div>
+								<div class="prices__discount">-40%</div>
 							</div>
 							<div class="about-product__text text">
 								<p>
@@ -71,52 +77,55 @@
 								</p>
 							</div>
 							<form action="#" class="about-product__form form-product">
-								<fieldset class="form-product__line">
-									<legend class="form-product__title">Select Colors</legend>
-									<label class="form-product__color --icon-check-mark">
-										<img src="@img/product-page/colors/01.svg" alt="Brown color">
-										<input type="radio" value="brown" name="color">
-									</label>
-									<label class="form-product__color --icon-check-mark">
-										<img src="@img/product-page/colors/02.svg" alt="Brown color">
-										<input type="radio" value="dark-green" name="color">
-									</label>
-									<label class="form-product__color --icon-check-mark">
-										<img src="@img/product-page/colors/03.svg" alt="Brown color">
-										<input type="radio" value="dark-blue" name="color">
-									</label>
-								</fieldset>
-								<fieldset class="form-product__line">
-									<legend class="form-product__title">Choose Size</legend>
-									<label class="form-product__size --icon-check-mark">
-										Small
-										<input type="radio" value="Small" name="size">
-									</label>
-									<label class="form-product__size --icon-check-mark">
-										Medium
-										<input type="radio" value="Medium" name="size">
-									</label>
-									<label class="form-product__size --icon-check-mark">
-										Large
-										<input type="radio" value="Large" name="size">
-									</label>
-									<label class="form-product__size --icon-check-mark">
-										X-Large
-										<input type="radio" value="X-Large" name="size">
-									</label>
-								</fieldset>
-								<div class="form-product__bottom">
-									<div data-quantity class="quantity">
-										<button data-quantity-minus type="button" class="quantity__button quantity__button--minus"></button>
+								<div class="form-product__line">
+									<h5 class="form-product__title">Select Colors</h5>
+									<div class="form-product__colors">
+										<label class="form-product__color --icon-check-mark">
+											<img src="@img/product-page/colors/01.svg" alt="Brown color">
+											<input checked type="radio" value="brown" name="color">
+										</label>
+										<label class="form-product__color --icon-check-mark">
+											<img src="@img/product-page/colors/02.svg" alt="Brown color">
+											<input type="radio" value="dark-green" name="color">
+										</label>
+										<label class="form-product__color --icon-check-mark">
+											<img src="@img/product-page/colors/03.svg" alt="Brown color">
+											<input type="radio" value="dark-blue" name="color">
+										</label>
+									</div>
+								</div>
+								<div class="form-product__line">
+									<h5 class="form-product__title">Choose Size</h5>
+									<div class="form-product__sizes">
+										<label class="form-product__size">
+											Small
+											<input type="radio" value="Small" name="size">
+										</label>
+										<label class="form-product__size">
+											Medium
+											<input type="radio" value="Medium" name="size">
+										</label>
+										<label class="form-product__size">
+											Large
+											<input checked type="radio" value="Large" name="size">
+										</label>
+										<label class="form-product__size">
+											X-Large
+											<input type="radio" value="X-Large" name="size">
+										</label>
+									</div>
+								</div>
+								<div class="form-product__line form-product__line--flex">
+									<div data-quantity class="form-product__quantity quantity">
+										<button data-quantity-minus type="button" class="quantity__button quantity__button--minus --icon-minus"></button>
 										<div class="quantity__input">
 											<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
 										</div>
-										<button data-quantity-plus type="button" class="quantity__button quantity__button--plus"></button>
+										<button data-quantity-plus type="button" class="quantity__button quantity__button--plus --icon-plus"></button>
 									</div>
 									<button type="submit" class="form-product__button button">Add to Cart</button>
 								</div>
 							</form>
-							form
 						</div>
 					</div>
 				</section>
