@@ -108,7 +108,7 @@ function initSliders() {
 			spaceBetween: 14,
 			speed: 600,
 			autoHeight: true,
-			direction: "vertical",
+			direction: "horizontal",
 			freeMode: {
 				enabled: true,
 				momentum: false,
@@ -155,11 +155,9 @@ function initSliders() {
 				// 	slidesPerView: 2,
 				// 	autoHeight: false,
 				// },
-				// 991.98: {
-				// 	slidesPerView: 3,
-				// 	spaceBetween: 20,
-				// 	autoHeight: false,
-				// },
+				991.98: {
+					direction: "vertical",
+				},
 			},
 		})
 

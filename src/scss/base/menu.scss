@@ -9,7 +9,7 @@
 		left: -100%;
 		top: 0;
 		overflow: auto;
-		padding: calc(toRem(68) + var(--header-banner-height)) toRem(15) toRem(30);
+		padding: calc(toRem(80) + var(--header-banner-height)) toRem(15) toRem(30);
 		transition:
 			left 0.3s,
 			padding-top 0.4s;

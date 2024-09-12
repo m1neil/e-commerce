@@ -6,6 +6,9 @@
 	display: flex;
 	background-color: #f0f0f0;
 	border-radius: toRem(62);
+	@media (max-width: $mobileSmall) {
+		padding-inline: toRem(16);
+	}
 	// .quantity__button
 	&__button {
 		flex: 0 0 toRem(63);
@@ -17,11 +20,6 @@
 		font-size: toRem(19);
 		color: var(--text-accent);
 		transition: background-color 0.3s;
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: #d1d1d1;
-			}
-		}
 		// .quantity__button_plus
 		&--plus {
 			border-radius: 0 toRem(62) toRem(62) 0;
@@ -29,6 +27,15 @@
 		// .quantity__button_minus
 		&--minus {
 			border-radius: toRem(62) 0 0 toRem(62);
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #d1d1d1;
+			}
+		}
+		@media (max-width: $mobileSmall) {
+			flex: 0 0 toRem(20);
+			font-size: toRem(16);
 		}
 	}
 	// .quantity__input
@@ -40,6 +47,15 @@
 			text-align: center;
 			color: var(--text-accent);
 			font-weight: 500;
+			@media (max-width: $mobileSmall) {
+				font-size: toRem(14);
+			}
 		}
+	}
+	@media (max-width: toEm(600)) {
+		height: toRem(44);
+	}
+	@media (max-width: $mobileSmall) {
+		width: toRem(110);
 	}
 }

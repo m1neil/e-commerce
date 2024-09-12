@@ -25,7 +25,7 @@ $fontAccent: "IntegralCF";
 
 :root {
 	--header-banner-height: 2.375rem; // 38px
-	@media (max-width: toEm(360)) {
+	@media (max-width: toEm(380.98)) {
 		--header-banner-height: 2.625rem; // 45px
 	}
 }
