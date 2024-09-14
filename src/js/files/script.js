@@ -41,11 +41,12 @@ function windowLoaded() {
 
 		if (targetElement.closest('.actions-review__button')) {
 			const wrapper = targetElement.closest('.actions-review')
-			wrapper.classList.toggle('--open')
 			const activeButton = document.querySelector('.actions-review.--open')
 			if (activeButton && activeButton !== wrapper)
 				activeButton.classList.remove('--open')
-		}
+			wrapper.classList.toggle('--open')
+		} else if (!targetElement.closest('.actions-review') && document.querySelector('.actions-review.--open'))
+			document.querySelector('.actions-review.--open').classList.remove('--open')
 
 		// is touch actions and tablet
 		if (isTouch) {

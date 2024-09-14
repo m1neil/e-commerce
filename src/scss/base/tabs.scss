@@ -4,6 +4,9 @@
 		display: flex;
 		&:not(:last-child) {
 			margin-bottom: toRem(24);
+			@media (max-width: $mobile) {
+				margin-bottom: toRem(20);
+			}
 		}
 		&[data-tabs-line] {
 			position: relative;
