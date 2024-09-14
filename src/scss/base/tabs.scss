@@ -2,6 +2,7 @@
 	// .tabs__navigation
 	&__navigation {
 		display: flex;
+		border-bottom: toRem(1) solid rgba(0, 0, 0, 0.1);
 		&:not(:last-child) {
 			margin-bottom: toRem(24);
 			@media (max-width: $mobile) {
@@ -11,25 +12,35 @@
 		&[data-tabs-line] {
 			position: relative;
 			--position-left: 33.333%;
+			--width: 0rem;
 			&::before {
 				content: "";
 				position: absolute;
 				width: percent(413, $maxWidthContainer);
 				height: toRem(2);
-				bottom: 0;
+				bottom: toRem(-1);
 				left: var(--position-left);
 				background-color: var(--bg-accent);
-				transition: left 0.3s;
+				transition:
+					left 0.3s,
+					width 0.3s;
+				@media (max-width: toEm(559.98)) {
+					width: var(--width);
+				}
 			}
+		}
+		@media (max-width: toEm(559.98)) {
+			column-gap: toRem(15);
+		}
+		@media (max-width: toEm(389.98)) {
+			column-gap: toRem(5);
 		}
 	}
 	// .tabs__title
 	&__title {
-		flex: 1 1 toRem(10);
-		border-bottom: toRem(1) solid rgba(0, 0, 0, 0.1);
 		padding: 0 toRem(20) toRem(24);
 		text-align: center;
-		color: gba(0, 0, 0, 0.6);
+		color: rgba(0, 0, 0, 0.6);
 		font-size: toRem(20);
 		font-weight: 500;
 		line-height: 1.1;
@@ -43,6 +54,25 @@
 			&:hover {
 				color: rgba(0, 0, 0, 0.8);
 				border-color: rgba(0, 0, 0, 0.5);
+			}
+		}
+		@media (min-width: toEm(560)) {
+			flex: 1 1 toRem(10);
+		}
+		@media (max-width: $tablet) {
+			padding: 0 toRem(15) toRem(20);
+		}
+		@media (max-width: toEm(700)) {
+			font-size: toRem(16);
+		}
+		@media (max-width: toEm(559.98)) {
+			flex-grow: 1;
+			padding-inline: 0;
+			&:first-child {
+				text-align: left;
+			}
+			&:last-child {
+				text-align: right;
 			}
 		}
 	}

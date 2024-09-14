@@ -8,11 +8,38 @@
 	// .product__tabs
 	&__tabs {
 		padding-block: toRem(40) toRem(32);
+		@media (max-width: $tablet) {
+			padding-block: toRem(25);
+		}
+		@media (max-width: toEm(389.98)) {
+			padding-block: toRem(17);
+		}
+	}
+	// .product__block-cloth
+	&__block-cloth {
+		.block-cloth__container {
+			padding-top: toRem(32);
+			@media (max-width: $tablet) {
+				padding-block: toRem(25) toRem(60);
+			}
+			@media (max-width: $mobile) {
+				padding-bottom: toRem(50);
+			}
+			@media (max-width: toEm(389.98)) {
+				padding-block: toRem(17) toRem(35);
+			}
+		}
 	}
 }
 
 .about-product {
 	padding-bottom: toRem(40);
+	@media (max-width: $tablet) {
+		padding-bottom: toRem(25);
+	}
+	@media (max-width: toEm(389.98)) {
+		padding-bottom: toRem(17);
+	}
 	// .about-product__container
 	&__container {
 		@media (min-width: $tablet) {
@@ -254,6 +281,7 @@
 			}
 		}
 	}
+	// .body-reviews__items
 	&__items {
 		@media (min-width: toEm(701)) {
 			display: grid;
@@ -267,6 +295,7 @@
 			}
 		}
 	}
+	// .body-reviews__item
 	&__item {
 		@media (max-width: toEm(700)) {
 			&:not(:last-child) {
@@ -274,6 +303,7 @@
 			}
 		}
 	}
+	// .body-reviews__more
 	&__more {
 		display: flex;
 		margin: 0 auto;
@@ -281,30 +311,44 @@
 	}
 }
 .header-body-reviews {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	column-gap: toRem(30);
+	@media (min-width: toEm(390)) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		column-gap: toRem(25);
+	}
 	// .header-body-reviews__content
 	&__content {
 		display: flex;
 		column-gap: toRem(8);
 		align-items: center;
+		@media (max-width: toEm(389.98)) {
+			&:not(:last-child) {
+				margin-bottom: toRem(15);
+			}
+		}
 	}
 	// .header-body-reviews__title
 	&__title {
 		color: var(--text-accent);
 		font-size: toRem(24);
 		font-weight: 700;
+		@media (max-width: toEm(700)) {
+			font-size: toRem(20);
+		}
 	}
 	// .header-body-reviews__quantity
 	&__quantity {
 		margin-top: toRem(3);
 		color: var(--text-primary);
+		@media (max-width: toEm(700)) {
+			font-size: toRem(14);
+		}
 	}
 	// .header-body-reviews__actions
 	&__actions {
 		display: flex;
+		align-items: center;
 		column-gap: toRem(10);
 		flex-shrink: 0;
 	}
@@ -326,11 +370,26 @@
 				background-color: #dad9d9;
 			}
 		}
+		@media (max-width: toEm(700)) {
+			width: toRem(40);
+			font-size: toRem(16);
+		}
 	}
-
+	.select {
+		display: none;
+		@media (min-width: toEm(650)) {
+			display: block;
+		}
+	}
 	// .header-body-reviews__write-review
 	&__write-review {
 		padding-block: toRem(13);
 		min-height: toRem(48);
+		@media (max-width: toEm(700)) {
+			min-height: toRem(40);
+			padding-block: toRem(9);
+			padding-inline: toRem(16);
+			font-size: toRem(12);
+		}
 	}
 }

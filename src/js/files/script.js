@@ -15,27 +15,28 @@ function windowLoaded() {
 		isTablet = e.matches
 	})
 	isTablet = mediaTablet.matches
+	const mediaMobileSmall = window.matchMedia(`(max-width: ${559.98 / 16}em)`)
+	mediaMobileSmall.addEventListener('change', e => {
+		initMoveTabLine(e.matches, calcWidthLineTabOnMobile)
+	})
 
 	if (banner) {
 		const isHideBanner = sessionStorage.getItem('hide-discount') ?
 			true : false
-		if (isHideBanner) {
-			document.documentElement.style.setProperty('--header-banner-height', '0rem')
-			_slideUp(banner, 400)
-		}
+		if (isHideBanner) hideBanner(banner)
 	}
 
 	initMenuSpoller()
 	initRating()
-	initMoveTabLine()
+	initMoveTabLine(mediaMobileSmall.matches, calcWidthLineTabOnMobile)
+
 	document.addEventListener('click', documentActions)
 
 	function documentActions(e) {
 		const targetElement = e.target
 
 		if (targetElement.closest('.banner-header__close')) {
-			document.documentElement.style.setProperty('--header-banner-height', '0rem')
-			_slideUp(targetElement.closest('.banner-header'), 400)
+			hideBanner(targetElement.closest('.banner-header'))
 			// sessionStorage.setItem('hide-discount', true) // ! Не забудь раскоментить
 		}
 
@@ -100,7 +101,13 @@ function windowLoaded() {
 			const itemNavigation = targetElement.closest('.tabs__title')
 			const navigation = targetElement.closest('[data-tabs-line]')
 			navigation.style.setProperty('--position-left', `${itemNavigation.offsetLeft / navigation.offsetWidth * 100}%`)
+			if (mediaMobileSmall.matches)
+				calcWidthLineTabOnMobile(navigation, itemNavigation.offsetWidth)
 		}
+	}
+
+	function calcWidthLineTabOnMobile(wrapper, widthTab) {
+		wrapper.style.setProperty('--width', `${widthTab / wrapper.offsetWidth * 100}%`)
 	}
 }
 
@@ -214,12 +221,22 @@ function initRating() {
 	}
 }
 
-function initMoveTabLine() {
-	const navigationTab = document.querySelector('[data-tabs-line]')
-	if (!navigationTab) return
-	const activeTab = navigationTab.querySelector('._tab-active')
+function initMoveTabLine(matches, functionCalcWidth) {
+	const navigationWrap = document.querySelector('[data-tabs-line]')
+	if (!navigationWrap) return
+	const activeTab = navigationWrap.querySelector('._tab-active')
 	if (!activeTab) return
+	navigationWrap.style.setProperty('--position-left', `${activeTab.offsetLeft / navigationWrap.offsetWidth * 100}%`)
+	if (matches)
+		functionCalcWidth(navigationWrap, activeTab.offsetWidth)
+	else navigationWrap.style.removeProperty('--width')
 
-	navigationTab.classList.add('_init-line')
-	navigationTab.style.setProperty('--position-left', `${activeTab.offsetLeft / navigationTab.offsetWidth * 100}%`)
+}
+
+function hideBanner(banner) {
+	const main = document.querySelector('main')
+	main.style.transition = 'padding-top 0.4s'
+	document.documentElement.style.setProperty('--header-banner-height', '0rem')
+	_slideUp(banner, 400)
+	setTimeout(() => main.style.removeProperty('transition'), 400);
 }

@@ -309,7 +309,7 @@
 				color: #01ab31;
 			}
 		}
-		@media (max-width: $mobileSmall) {
+		@media (max-width: toEm(700)) {
 			font-size: toRem(16);
 		}
 	}
@@ -319,7 +319,7 @@
 		padding-right: toRem(3);
 		&:not(:last-child) {
 			margin-bottom: toRem(24);
-			@media (max-width: $mobile) {
+			@media (max-width: toEm(700)) {
 				margin-bottom: toRem(16);
 			}
 		}
