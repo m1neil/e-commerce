@@ -217,7 +217,7 @@ export function formSubmit() {
 		setTimeout(() => {
 			if (flsModules.popup) {
 				const popup = form.dataset.popupMessage;
-				popup ? flsModules.popup.open(popup) : null;
+				if (popup) flsModules.popup.open(popup)
 			}
 		}, 0);
 		// Очищуємо форму
@@ -267,9 +267,8 @@ export function formQuantity() {
 		input.addEventListener('focusout', e => {
 			const value = parseInt(e.target.value)
 			if (!value) {
-				const minValue = e.target.dataset.quantityMin ?
+				e.target.value = e.target.dataset.quantityMin ?
 					e.target.dataset.quantityMin : 1
-				e.target.value = minValue
 			}
 		})
 	})

@@ -30,9 +30,7 @@ function initSliders() {
 	// Перевіряємо, чи є слайдер на сторінці
 	if (document.querySelector('.swiper')) { // Вказуємо склас потрібного слайдера
 		// Створюємо слайдер
-		new Swiper('.reviews__slider', { // Вказуємо склас потрібного слайдера
-			// Підключаємо модулі слайдера
-			// для конкретного випадку
+		new Swiper('.reviews__slider', {
 			modules: [Navigation],
 			slidesPerView: 1,
 			slidesPerGroup: 1,
@@ -41,37 +39,6 @@ function initSliders() {
 			speed: 800,
 			grabCursor: true,
 			autoHeight: true,
-			//touchRatio: 0,
-			//simulateTouch: false,
-			// loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
-			// Пагінація
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
 			// Кнопки "вліво/вправо"
 			navigation: {
 				prevEl: '.block-header__button--prev',
@@ -97,17 +64,13 @@ function initSliders() {
 	}
 
 	if (document.querySelector('.main-slider') && document.querySelector('.sub-slider')) {
-
-
-		const subSlider = new Swiper('.sub-slider', { // Вказуємо склас потрібного слайдера
-			// Підключаємо модулі слайдера
-			// для конкретного випадку
+		const subSlider = new Swiper('.sub-slider', {
 			modules: [Navigation, FreeMode],
 			slidesPerView: 3,
 			slidesPerGroup: 1,
 			spaceBetween: 14,
 			speed: 600,
-			autoHeight: true,
+			autoHeight: false,
 			direction: "horizontal",
 			freeMode: {
 				enabled: true,
@@ -119,51 +82,16 @@ function initSliders() {
 				sticky: true,
 			},
 
-			//touchRatio: 0,
-			//simulateTouch: false,
-			// loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
-			// Пагінація
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
 			// Брейкпоінти
 			breakpoints: {
-				// 630: {
-				// 	slidesPerView: 2,
-				// 	autoHeight: false,
-				// },
 				991.98: {
 					direction: "vertical",
+					autoHeight: true,
 				},
 			},
 		})
 
 		const mainSlider = new Swiper('.main-slider', { // Вказуємо склас потрібного слайдера
-			// Підключаємо модулі слайдера
-			// для конкретного випадку
 			modules: [Navigation, Thumbs],
 			slidesPerView: 1,
 			slidesPerGroup: 1,
@@ -174,48 +102,6 @@ function initSliders() {
 			thumbs: {
 				swiper: subSlider,
 				autoScrollOffset: 1,
-			},
-			//touchRatio: 0,
-			//simulateTouch: false,
-			// loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
-			// Пагінація
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-			// Брейкпоінти
-			breakpoints: {
-				// 630: {
-				// 	slidesPerView: 2,
-				// 	autoHeight: false,
-				// },
-				// 991.98: {
-				// 	slidesPerView: 3,
-				// 	spaceBetween: 20,
-				// 	autoHeight: false,
-				// },
 			},
 		})
 	}

@@ -65,7 +65,12 @@
 						</div>
 						<div class="about-product__content">
 							<h1 class="about-product__title title title--very-small">One Life Graphic T-shirt</h1>
-							<div data-rating-size="24" data-rating="4.5" data-rating-value class="about-product__rating rating rating--big"></div>
+							<div
+								data-rating-size="24"
+								data-rating="4.5"
+								data-rating-value
+								class="about-product__rating rating rating--big">
+							</div>
 							<div class="about-product__prices prices prices--fz-big">
 								<div class="prices__current-price">$260</div>
 								<div class="prices__old-price">$300</div>
@@ -117,11 +122,19 @@
 								</div>
 								<div class="form-product__line form-product__line--flex">
 									<div data-quantity class="form-product__quantity quantity">
-										<button data-quantity-minus type="button" class="quantity__button quantity__button--minus --icon-minus"></button>
+										<button
+											data-quantity-minus
+											type="button"
+											class="quantity__button quantity__button--minus --icon-minus">
+										</button>
 										<div class="quantity__input">
 											<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
 										</div>
-										<button data-quantity-plus type="button" class="quantity__button quantity__button--plus --icon-plus"></button>
+										<button
+											data-quantity-plus
+											type="button"
+											class="quantity__button quantity__button--plus --icon-plus">
+										</button>
 									</div>
 									<button type="submit" class="form-product__button button">Add to Cart</button>
 								</div>
@@ -129,6 +142,39 @@
 						</div>
 					</div>
 				</section>
+				<div data-tabs class="product__tabs tabs">
+					<div class="tabs__container">
+						<nav data-tabs-titles data-tabs-line class="tabs__navigation">
+							<button type="button" class="tabs__title">Product Details</button>
+							<button type="button" class="tabs__title _tab-active">Rating & Reviews</button>
+							<button type="button" class="tabs__title">FAQs</button>
+						</nav>
+						<div data-tabs-body class="tabs__content">
+							<div class="tabs__body">
+								Харкатеристики продукта
+							</div>
+							<div class="tabs__body body-reviews">
+								<div class="body-reviews__header header-body-reviews">
+									<div class="header-body-reviews__content">
+										<h4 class="header-body-reviews__title">All Reviews</h4>
+										<div class="header-body-reviews__quantity">(451)</div>
+									</div>
+									<div class="header-body-reviews__actions">
+										<button aria-label="open options" type="button" class="header-body-reviews__options --icon-settings"></button>
+										<select>
+											<option value="latest" selected>Latest</option>
+											<option value="news">News</option>
+										</select>
+										<a href="#" class="header-body-reviews__write-review button">Write a Review</a>
+									</div>
+								</div>
+							</div>
+							<div class="tabs__body">
+								Вопросы
+							</div>
+						</div>
+					</div>
+				</div>
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>

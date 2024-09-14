@@ -27,6 +27,7 @@ function windowLoaded() {
 
 	initMenuSpoller()
 	initRating()
+	initMoveTabLine()
 	document.addEventListener('click', documentActions)
 
 	function documentActions(e) {
@@ -92,6 +93,12 @@ function windowLoaded() {
 					}
 				}
 			}
+		}
+
+		if (targetElement.closest('.tabs__title') && targetElement.closest('[data-tabs-line]')) {
+			const itemNavigation = targetElement.closest('.tabs__title')
+			const navigation = targetElement.closest('[data-tabs-line]')
+			navigation.style.setProperty('--position-left', `${itemNavigation.offsetLeft / navigation.offsetWidth * 100}%`)
 		}
 	}
 }
@@ -204,4 +211,14 @@ function initRating() {
 		star.insertAdjacentHTML('beforeend', `<img style="width: ${initSize / 16}rem; height: ${initSize / 16}rem; object-fit: contain" src="img/icons/star.svg">`)
 		return star
 	}
+}
+
+function initMoveTabLine() {
+	const navigationTab = document.querySelector('[data-tabs-line]')
+	if (!navigationTab) return
+	const activeTab = navigationTab.querySelector('._tab-active')
+	if (!activeTab) return
+
+	navigationTab.classList.add('_init-line')
+	navigationTab.style.setProperty('--position-left', `${activeTab.offsetLeft / navigationTab.offsetWidth * 100}%`)
 }
