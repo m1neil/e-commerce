@@ -38,14 +38,14 @@ flsFunctions.addTouchClass();
 /* Модуль для роботи з меню (Бургер) */
 flsFunctions.menuInit();
 /* Форматування чисел */
-// import './libs/wNumb.min.js';
+import './libs/wNumb.min.js';
 
 /*
 Модуль "Спойлери"
 Документація: https://template.fls.guru/template-docs/modul-spojlery.html
 Сніппет (HTML): spollers
 */
-// flsFunctions.spollers();
+flsFunctions.spollers();
 
 /*
 Модуль "Таби"
@@ -145,7 +145,7 @@ import './libs/select.js'
 Документація плагіна: https://refreshless.com/nouislider/
 Сніппет (HTML): range
 */
-// import "./files/forms/range.js";
+import "./files/forms/range.js";
 
 /* Модуль роботи з підказками (tippy) */
 /*

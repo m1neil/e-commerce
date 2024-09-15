@@ -5,43 +5,24 @@ import * as noUiSlider from 'nouislider';
 // у файлі scss/forms/forms.scss
 
 // Підключення стилів з node_modules
-import 'nouislider/dist/nouislider.css';
+// import 'nouislider/dist/nouislider.css';
 
 export function rangeInit() {
 	const priceSlider = document.querySelector('#range');
 	if (priceSlider) {
-		let textFrom = priceSlider.getAttribute('data-from');
-		let textTo = priceSlider.getAttribute('data-to');
 		noUiSlider.create(priceSlider, {
-			start: 0, // [0,200000]
-			connect: [true, false],
+			start: [50, 200],
+			tooltips: [
+				wNumb({ decimals: 0, prefix: '$' }),
+				wNumb({ decimals: 0, prefix: '$' })
+			],
+			connect: [false, true, false],
+			margin: 23,
 			range: {
-				'min': [0],
-				'max': [200000]
+				'min': 0,
+				'max': 500
 			},
-			/*
-			format: wNumb({
-				decimals: 0
-			})
-			*/
 		});
-		/*
-		const priceStart = document.getElementById('price-start');
-		const priceEnd = document.getElementById('price-end');
-		priceStart.addEventListener('change', setPriceValues);
-		priceEnd.addEventListener('change', setPriceValues);
-		*/
-		function setPriceValues() {
-			let priceStartValue;
-			let priceEndValue;
-			if (priceStart.value != '') {
-				priceStartValue = priceStart.value;
-			}
-			if (priceEnd.value != '') {
-				priceEndValue = priceEnd.value;
-			}
-			priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
-		}
 	}
 }
 rangeInit();

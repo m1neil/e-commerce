@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+	@@include('html/_head.htm',{
+	"title":"Catalog - E-commerce"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{
+			"classList":"header"
+			})
+			<main class="catalog">
+				<div class="catalog__navigation navigation">
+					<div class="navigation__container">
+						<ul class="navigation__list">
+							<li class="navigation__item">
+								<a href="#" class="navigation__link --icon-arrow-right">Home</a>
+							</li>
+							<li class="navigation__item">
+								Casual
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="catalog__body body-catalog">
+					<div class="body-catalog__container">
+						<aside class="body-catalog__sidebar sidebar-catalog">
+							<h4 class="sidebar-catalog__title sidebar-catalog__title--main --icon-settings">Filters</h4>
+							<div class="sidebar-catalog__line">
+								<a href="#" class="sidebar-catalog__link --icon-arrow-right">T-shirts</a>
+								<a href="#" class="sidebar-catalog__link --icon-arrow-right">Shorts</a>
+								<a href="#" class="sidebar-catalog__link --icon-arrow-right">Shirts</a>
+								<a href="#" class="sidebar-catalog__link --icon-arrow-right">Hoodie</a>
+								<a href="#" class="sidebar-catalog__link --icon-arrow-right">Jeans</a>
+							</div>
+							<form action="#" data-dev data-spollers data-spollers-speed="400" class="sidebar-catalog__options">
+								<details data-open class="sidebar-catalog__item">
+									<summary class="sidebar-catalog__title --icon-arrow-right"><h4>Price</h4></summary>
+									<div class="sidebar-catalog__content">
+										<div class="sidebar-catalog__wrap">
+											<div class="sidebar-catalog__range range" id="range"></div>
+										</div>
+									</div>
+								</details>
+								<details data-open class="sidebar-catalog__item">
+									<summary class="sidebar-catalog__title --icon-arrow-right"><h4>Colors</h4></summary>
+									<div class="sidebar-catalog__content">
+										<div class="sidebar-catalog__wrap">
+											<div class="sidebar-catalog__colors">
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input checked type="checkbox" value="#" name="color">
+													<img src="@img/colors/green.svg" alt="green color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/red.svg" alt="red color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/yellow.svg" alt="yellow color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/orange.svg" alt="orange color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/light-blue.svg" alt="light blue color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/blue.svg" alt="blue color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/purple.svg" alt="purple color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/pink.svg" alt="pink color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border color-product--inverse --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/white.svg" alt="white color">
+												</label>
+												<label class="sidebar-catalog__color color-product color-product--border --icon-check-mark">
+													<input type="checkbox" value="#" name="color">
+													<img src="@img/colors/black.svg" alt="black color">
+												</label>
+											</div>
+										</div>
+									</div>
+								</details>
+								<details data-open class="sidebar-catalog__item">
+									<summary class="sidebar-catalog__title --icon-arrow-right"><h4>Size</h4></summary>
+									<div class="sidebar-catalog__content">
+										<div class="sidebar-catalog__wrap">
+											<div class="sidebar-catalog__sizes">
+												<label class="sidebar-catalog__size size-product">
+													XX-Small
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													X-Small
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													Small
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													Medium
+													<input checked type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													Large
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													X-Large
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													XX-Large
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													3X-Large
+													<input type="checkbox" value="#">
+												</label>
+												<label class="sidebar-catalog__size size-product">
+													4X-Large
+													<input type="checkbox" value="#">
+												</label>
+											</div>
+										</div>
+									</div>
+								</details>
+								<details data-open class="sidebar-catalog__item">
+									<summary class="sidebar-catalog__title --icon-arrow-right"><h4>Dress Style</h4></summary>
+									<div class="sidebar-catalog__content">
+										<div class="sidebar-catalog__wrap">
+											<a href="#" class="sidebar-catalog__link --icon-arrow-right">Casual</a>
+											<a href="#" class="sidebar-catalog__link --icon-arrow-right">Formal</a>
+											<a href="#" class="sidebar-catalog__link --icon-arrow-right">Party</a>
+											<a href="#" class="sidebar-catalog__link --icon-arrow-right">Gym</a>
+										</div>
+									</div>
+								</details>
+								<button type="submit" class="sidebar-catalog__button button">Apply Filter</button>
+							</form>
+						</aside>
+						<div class="body-catalog__content content-catalog"></div>
+					</div>
+				</div>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_js.htm',{})
+	</body>
+</html>
