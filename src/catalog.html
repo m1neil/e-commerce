@@ -37,7 +37,14 @@
 									<summary class="sidebar-catalog__title --icon-arrow-right"><h4>Price</h4></summary>
 									<div class="sidebar-catalog__content">
 										<div class="sidebar-catalog__wrap">
-											<div class="sidebar-catalog__range range" id="range"></div>
+											<div
+												data-range-min="0"
+												data-range-max="250"
+												data-range-start="20,200"
+												data-range-prefix="$"
+												class="sidebar-catalog__range range"
+												id="range">
+											</div>
 										</div>
 									</div>
 								</details>
@@ -149,7 +156,72 @@
 								<button type="submit" class="sidebar-catalog__button button">Apply Filter</button>
 							</form>
 						</aside>
-						<div class="body-catalog__content content-catalog"></div>
+						<div class="body-catalog__content content-catalog">
+							<div class="content-catalog__header">
+								<h1 class="content-catalog__title">Casual</h1>
+								<div class="content-catalog__actions">
+									<div class="content-catalog__text">Showing 1-10 of 100 Products</div>
+									<form action="#" class="content-catalog__form">
+										<label class="content-catalog__label">Sort by:</label>
+										<select data-class-modif="popular" name="popularity">
+											<option value="most-popular" selected>Most Popular</option>
+											<option value="less-popular">Less Popular</option>
+										</select>
+									</form>
+								</div>
+							</div>
+							<div class="content-catalog__goods">
+								<article class="card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/01.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
+									<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices prices">
+										<div class="prices__current-price">$120</div>
+										<div class="prices__old-price">$260</div>
+										<div class="prices__discount">-20%</div>
+									</div>
+								</article>
+								<article class="card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/01.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
+									<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices prices">
+										<div class="prices__current-price">$120</div>
+										<div class="prices__old-price">$260</div>
+										<div class="prices__discount">-20%</div>
+									</div>
+								</article>
+								<article class="card-product">
+									<a href="#" class="card-product__img">
+										<img src="@img/products/01.jpg" alt="Image">
+									</a>
+									<h3 class="card-product__title"><a href="#">t-shirt with Tape details</a></h3>
+									<div data-rating-size="17" data-rating="4.5" class="card-product__rating rating"></div>
+									<div class="card-product__prices prices">
+										<div class="prices__current-price">$120</div>
+										<div class="prices__old-price">$260</div>
+										<div class="prices__discount">-20%</div>
+									</div>
+								</article>
+							</div>
+							<div class="content-catalog__pagination pagination">
+								<button type="button" class="pagination__button pagination__button--prev --icon-arrow-pagination">Previous</button>
+								<div class="pagination__pages">
+									<button type="button" class="pagination__page --active">1</button>
+									<button type="button" class="pagination__page">2</button>
+									<button type="button" class="pagination__page">3</button>
+									<button type="button" class="pagination__page">...</button>
+									<button type="button" class="pagination__page">8</button>
+									<button type="button" class="pagination__page">9</button>
+									<button type="button" class="pagination__page">10</button>
+								</div>
+								<button type="button" class="pagination__button pagination__button--next --icon-arrow-pagination">Next</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</main>

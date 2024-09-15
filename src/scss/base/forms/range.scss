@@ -4,51 +4,54 @@
  */
 .noUi-target,
 .noUi-target * {
-	-webkit-touch-callout: none;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-webkit-user-select: none;
-	-ms-touch-action: none;
 	touch-action: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
 	user-select: none;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 .noUi-target {
 	position: relative;
-	padding-bottom: toRem(20);
 }
 .noUi-base {
+	// * Вот тут нужно убрать width: 100%; Если не хотим чтобы range растягивался больше чем нужно
 	position: relative;
-	width: 100%;
-	height: toRem(20);
+	height: 100%;
 	z-index: 1;
-	&::before {
-		content: "";
-		position: absolute;
-		width: 100%;
-		height: toRem(6);
-		background-color: #f0f0f0;
-		border-radius: toRem(20);
-		top: 50%;
-		left: 0;
-		transform: translate(0, -50%);
-	}
+	padding-top: toRem(7);
 }
 
 /* Wrapper for all connect elements.
  */
 .noUi-connects {
-	position: absolute;
-	width: 100%;
-	height: toRem(6);
-	top: 50%;
-	left: 0;
-	transform: translate(0, -50%);
+	// *Тут даем min-width: 100%; чтобы полоса которая заполняет растянулась на 100% допустимой ширины как минимум
+	position: relative;
+	min-width: 100%;
 	overflow: hidden;
 	z-index: 0;
+	height: toRem(6);
+	background-color: #f0f0f0;
+	border-radius: toRem(20);
 }
+
+.noUi-base {
+	// * Добавляем margin-inline с размер половины тригерной ручки
+	margin-inline: toRem(10);
+}
+.noUi-connects {
+	// * Добавляем margin-inline отрицательный с размер половины тригерной ручки
+	margin-inline: toRem(-10);
+}
+
+.noUi-handle {
+	// * Добавляем right отрицательный с размер половины тригерной ручки
+	background-color: var(--bg-accent);
+	border-radius: 50%;
+	width: toRem(20);
+	height: toRem(20);
+	right: toRem(-10);
+	top: 0;
+	cursor: pointer;
+}
+
 .noUi-connect,
 .noUi-origin {
 	will-change: transform;
@@ -58,15 +61,14 @@
 	right: 0;
 	height: 100%;
 	width: 100%;
-	-ms-transform-origin: 0 0;
-	-webkit-transform-origin: 0 0;
-	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	transform-origin: 0 0;
 	transform-style: flat;
 }
-.noUi-connect {
-}
 
+.noUi-connect {
+	height: toRem(6);
+}
 /* Offset direction
  */
 .noUi-txt-dir-rtl.noUi-horizontal .noUi-origin {
@@ -76,10 +78,7 @@
 /* Give origins 0 height/width so they don't interfere with clicking the
  * connect elements.
  */
-.noUi-vertical .noUi-origin {
-	top: -100%;
-	width: 0;
-}
+
 .noUi-horizontal .noUi-origin {
 	height: 0;
 }
@@ -101,23 +100,19 @@
 /* Slider size and handle placement;
  */
 .noUi-horizontal {
-}
-.noUi-horizontal .noUi-handle {
-	right: toRem(-17);
-	top: 0;
-}
-.noUi-horizontal .noUi-handle-lower {
-}
-.noUi-horizontal .noUi-handle-upper {
-	right: 0;
+	height: toRem(40);
 }
 
+.noUi-txt-dir-rtl.noUi-horizontal .noUi-handle {
+	// left: -17px;
+	// right: auto;
+}
 /* Styling;
  * Giving the connect element a border radius causes issues with using transform: scale
  */
-.noUi-connects {
-	border-radius: 3px;
+.noUi-target {
 }
+
 .noUi-connect {
 	background-color: var(--bg-accent);
 }
@@ -129,13 +124,9 @@
 .noUi-vertical .noUi-draggable {
 	cursor: ns-resize;
 }
-.noUi-handle {
-	width: toRem(20);
-	height: toRem(20);
-	background-color: var(--bg-accent);
-	border-radius: 50%;
-	cursor: pointer;
-}
+
+/* Handle stripes;
+ */
 
 /* Disabled state;
  */
@@ -161,92 +152,57 @@
 /* Values;
  *
  */
-// .noUi-value {
-// 	position: absolute;
-// 	white-space: nowrap;
-// 	text-align: center;
-// }
-// .noUi-value-sub {
-// 	color: #ccc;
-// 	font-size: 10px;
-// }
-/* Markings;
- *
- */
-.noUi-marker {
+.noUi-value {
 	position: absolute;
-	background: #ccc;
+	white-space: nowrap;
+	text-align: center;
 }
-.noUi-marker-sub {
-	background: #aaa;
+.noUi-value-sub {
+	color: #ccc;
+	font-size: 10px;
 }
-.noUi-marker-large {
-	background: #aaa;
-}
-/* Horizontal layout;
- *
- */
-// .noUi-pips-horizontal {
-// 	padding: 10px 0;
-// 	height: 80px;
-// 	top: 100%;
-// 	left: 0;
-// 	width: 100%;
-// }
-// .noUi-value-horizontal {
-// 	transform: translate(-50%, 50%);
-// }
-// .noUi-rtl .noUi-value-horizontal {
-// 	transform: translate(50%, 50%);
-// }
-// .noUi-marker-horizontal.noUi-marker {
-// 	margin-left: -1px;
-// 	width: 2px;
-// 	height: 5px;
-// }
-// .noUi-marker-horizontal.noUi-marker-sub {
-// 	height: 10px;
-// }
-// .noUi-marker-horizontal.noUi-marker-large {
-// 	height: 15px;
-// }
-/* Vertical layout;
- *
- */
-// .noUi-pips-vertical {
-// 	padding: 0 10px;
-// 	height: 100%;
-// 	top: 0;
-// 	left: 100%;
-// }
-// .noUi-value-vertical {
-// 	transform: translate(0, -50%);
-// 	padding-left: 25px;
-// }
 
-// .noUi-marker-vertical.noUi-marker {
-// 	width: 5px;
-// 	height: 2px;
-// 	margin-top: -1px;
-// }
-// .noUi-marker-vertical.noUi-marker-sub {
-// 	width: 10px;
-// }
-// .noUi-marker-vertical.noUi-marker-large {
-// 	width: 15px;
-// }
+.noUi-pips-horizontal {
+	padding: 10px 0;
+	height: 80px;
+	top: 100%;
+	left: 0;
+	width: 100%;
+}
+.noUi-value-horizontal {
+	-webkit-transform: translate(-50%, 50%);
+	transform: translate(-50%, 50%);
+}
+.noUi-rtl .noUi-value-horizontal {
+	-webkit-transform: translate(50%, 50%);
+	transform: translate(50%, 50%);
+}
+.noUi-marker-horizontal.noUi-marker {
+	margin-left: -1px;
+	width: 2px;
+	height: 5px;
+}
+.noUi-marker-horizontal.noUi-marker-sub {
+	height: 10px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+	height: 15px;
+}
+
 .noUi-tooltip {
 	display: block;
 	position: absolute;
-	color: var(--text-accent);
-	font-size: toRem(14);
-	font-weight: 500;
+	background-color: #fff;
+	color: #000;
+	padding: toRem(5) toRem(5) 0;
 	text-align: center;
 	white-space: nowrap;
 }
-.noUi-horizontal .noUi-tooltip {
+.noUi-tooltip {
 	transform: translate(-50%, 0);
-	padding-top: toRem(6);
 	left: 50%;
 	top: 100%;
+	color: var(--bg-accent);
+	font-size: toRem(14);
+	font-weight: 500;
 }

@@ -10,13 +10,23 @@
 	// .select__title
 	&__title {
 		border-radius: toRem(62);
-		background-color: #f0f0f0;
 		cursor: pointer;
 		width: 100%;
 		transition: background-color 0.3s;
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: #dad9d9;
+		.select:not(.select_popular) & {
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: #dad9d9;
+				}
+			}
+		}
+		.select_popular & {
+			@media (any-hover: hover) {
+				&:hover {
+					.select__content {
+						color: #022bc0;
+					}
+				}
 			}
 		}
 	}
@@ -40,6 +50,19 @@
 				transform: rotate(-90deg);
 			}
 		}
+		.select_popular & {
+			padding: 0;
+			column-gap: toRem(4);
+			min-width: toRem(116);
+			justify-content: flex-end;
+			&::after {
+				width: toRem(16);
+				aspect-ratio: 1;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		}
 		@media (max-width: toEm(700)) {
 			padding-block: toRem(12);
 			column-gap: toRem(15);
@@ -51,6 +74,9 @@
 		overflow: hidden;
 		color: var(--text-accent);
 		font-weight: 500;
+		.select_popular & {
+			transition: color 0.3s;
+		}
 		@media (max-width: toEm(700)) {
 			font-size: toRem(14);
 		}
@@ -65,6 +91,12 @@
 		border-top: 0;
 		padding: toRem(7) 0;
 		border-radius: toRem(8);
+		.select_popular & {
+			left: auto;
+			right: 0;
+			min-width: toRem(140);
+			background-color: var(--bg-accent);
+		}
 	}
 	// .select__option
 	&__option {
@@ -79,9 +111,18 @@
 		&._select-selected {
 			background-color: #eee;
 		}
+		.select_popular & {
+			text-align: center;
+			color: var(--text-inverse);
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: #d9d9d9;
+			}
+			.select_popular & {
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.3);
+				}
 			}
 		}
 		@media (max-width: toEm(700)) {

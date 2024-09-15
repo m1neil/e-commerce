@@ -9,19 +9,23 @@ import * as noUiSlider from 'nouislider';
 
 export function rangeInit() {
 	const priceSlider = document.querySelector('#range');
+	const min = priceSlider.dataset.rangeMin ? parseFloat(priceSlider.dataset.rangeMin) : 0
+	const max = priceSlider.dataset.rangeMax ? parseFloat(priceSlider.dataset.rangeMax) : 500
+	const prefix = priceSlider.dataset.rangePrefix ? priceSlider.dataset.rangePrefix : '$'
+	const optionsStart = priceSlider.dataset.rangeStart.split(',')
+	const startFirstHandle = optionsStart[0] ? parseFloat(optionsStart[0]) : 50
+	const startSecondHandle = optionsStart[1] ? parseFloat(optionsStart[1]) : 200
+
 	if (priceSlider) {
 		noUiSlider.create(priceSlider, {
-			start: [50, 200],
+			start: [startFirstHandle, startSecondHandle],
 			tooltips: [
-				wNumb({ decimals: 0, prefix: '$' }),
-				wNumb({ decimals: 0, prefix: '$' })
+				wNumb({ decimals: 0, prefix }),
+				wNumb({ decimals: 0, prefix })
 			],
 			connect: [false, true, false],
-			margin: 23,
-			range: {
-				'min': 0,
-				'max': 500
-			},
+			// margin: 40,
+			range: { min, max },
 		});
 	}
 }
