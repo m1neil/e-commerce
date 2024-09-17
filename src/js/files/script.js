@@ -2,13 +2,15 @@
 import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
-import { _slideToggle, _slideUp, _slideDown, menuClose } from "./functions.js";
+import { _slideToggle, _slideUp, _slideDown, menuClose, bodyLock, bodyUnlock } from "./functions.js";
 
 window.addEventListener('load', windowLoaded)
 
 function windowLoaded() {
 	const isTouch = document.documentElement.classList.contains('touch')
 	const banner = document.querySelector('.banner-header')
+	const mainHeader = document.querySelector('.main-header')
+	const filter = document.querySelector('.sidebar-catalog')
 	let isTablet
 	const mediaTablet = window.matchMedia(`(min-width: ${767.98 / 16}em)`)
 	mediaTablet.addEventListener('change', e => {
@@ -36,6 +38,17 @@ function windowLoaded() {
 		const targetElement = e.target
 
 		if (targetElement.closest('.banner-header__close')) {
+			if (filter && document.documentElement.classList.contains('filter-open')) {
+				filter.style.transition = 'top 0.4s, height 0.4s'
+				const heightBannerHeader = document.querySelector('.banner-header') ?
+					document.querySelector('.banner-header').offsetHeight : 0
+				const offsetTop = filter.getBoundingClientRect().top - heightBannerHeader
+				document.documentElement.style.setProperty('--offset-top-header', offsetTop + 15 + 'px')
+				setTimeout(() => {
+					filter.style.removeProperty('transition')
+					filter.style.removeProperty('height')
+				}, 400);
+			}
 			hideBanner(targetElement.closest('.banner-header'))
 			// sessionStorage.setItem('hide-discount', true) // ! Не забудь раскоментить
 		}
@@ -48,6 +61,21 @@ function windowLoaded() {
 			wrapper.classList.toggle('--open')
 		} else if (!targetElement.closest('.actions-review') && document.querySelector('.actions-review.--open'))
 			document.querySelector('.actions-review.--open').classList.remove('--open')
+
+		if (targetElement.closest('.content-catalog__filter') && filter) {
+			document.documentElement.style.setProperty('--header-height', mainHeader.offsetHeight + 25 + 'px')
+			const offsetTop = filter.getBoundingClientRect().top
+			document.documentElement.style.setProperty('--offset-top-header', offsetTop + 15 + 'px')
+			document.documentElement.classList.add('filter-open')
+			bodyLock(300)
+		} else if (targetElement.closest('.sidebar-catalog__close') ||
+			!targetElement.closest('.sidebar-catalog') &&
+			document.documentElement.classList.contains('filter-open') &&
+			!targetElement.closest('.banner-header__close')
+		) {
+			document.documentElement.classList.remove('filter-open')
+			bodyUnlock(300)
+		}
 
 		// is touch actions and tablet
 		if (isTouch) {
@@ -70,10 +98,8 @@ function windowLoaded() {
 					if (parentBlock.classList.contains('--open') &&
 						document.documentElement.classList.contains('search-show'))
 						document.documentElement.classList.remove('search-show')
-				} else if (!targetElement.closest('.menu__item')) {
-					const openSubMenu = document.querySelector('[data-spoller-block].--open')
-					if (openSubMenu) openSubMenu.classList.remove('--open')
-				}
+				} else if (!targetElement.closest('.menu__item') && document.querySelector('[data-spoller-block].--open'))
+					document.querySelector('[data-spoller-block].--open').classList.remove('--open')
 			}
 
 			if (!isTablet) {

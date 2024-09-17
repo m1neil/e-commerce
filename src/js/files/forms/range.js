@@ -9,6 +9,7 @@ import * as noUiSlider from 'nouislider';
 
 export function rangeInit() {
 	const priceSlider = document.querySelector('#range');
+	if (!priceSlider) return
 	const min = priceSlider.dataset.rangeMin ? parseFloat(priceSlider.dataset.rangeMin) : 0
 	const max = priceSlider.dataset.rangeMax ? parseFloat(priceSlider.dataset.rangeMax) : 500
 	const prefix = priceSlider.dataset.rangePrefix ? priceSlider.dataset.rangePrefix : '$'
@@ -24,7 +25,6 @@ export function rangeInit() {
 				wNumb({ decimals: 0, prefix })
 			],
 			connect: [false, true, false],
-			// margin: 40,
 			range: { min, max },
 		});
 	}

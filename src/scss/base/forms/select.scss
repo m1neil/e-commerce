@@ -53,14 +53,17 @@
 		.select_popular & {
 			padding: 0;
 			column-gap: toRem(4);
-			min-width: toRem(116);
-			justify-content: flex-end;
+			// min-width: toRem(116);
+			justify-content: flex-start;
 			&::after {
 				width: toRem(16);
 				aspect-ratio: 1;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+			}
+			@media (max-width: toEm(700)) {
+				min-width: toRem(103);
 			}
 		}
 		@media (max-width: toEm(700)) {
