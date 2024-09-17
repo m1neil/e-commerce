@@ -118,6 +118,13 @@
 		min-height: toRem(96);
 		column-gap: toRem(40);
 		padding-block: toRem(15);
+		transition:
+			min-height 0.3s,
+			padding-block 0.3s;
+		._header-scroll & {
+			min-height: toRem(60);
+			padding-block: toRem(12);
+		}
 		@media (max-width: $tablet) {
 			column-gap: toRem(25);
 			min-height: toRem(60);

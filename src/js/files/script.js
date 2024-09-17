@@ -42,7 +42,6 @@ function windowLoaded() {
 
 	function documentActions(e) {
 		const targetElement = e.target
-
 		if (targetElement.closest('.banner-header__close')) {
 			if (filter && document.documentElement.classList.contains('filter-open')) {
 				filter.style.transition = 'top 0.4s, height 0.4s'
@@ -81,6 +80,14 @@ function windowLoaded() {
 		) {
 			document.documentElement.classList.remove('filter-open')
 			bodyUnlock(300)
+		}
+
+		if (targetElement.closest('.product-cart__remove')) {
+			targetElement.closest('.product-cart').remove()
+			if (!document.querySelector('.product-cart')) {
+				const wrapper = document.querySelector('.body-cart__goods')
+				wrapper.insertAdjacentHTML('beforeend', '<div style="text-align: center;">Cart is empty</div>')
+			}
 		}
 
 		// is touch actions and tablet
@@ -272,3 +279,4 @@ function hideBanner(banner) {
 	_slideUp(banner, 400)
 	setTimeout(() => main.style.removeProperty('transition'), 400);
 }
+
