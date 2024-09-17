@@ -6,8 +6,10 @@
 	display: flex;
 	background-color: #f0f0f0;
 	border-radius: toRem(62);
-	@media (max-width: $mobileSmall) {
-		padding-inline: toRem(16);
+	&--less {
+		width: toRem(126);
+		height: toRem(44);
+		padding-inline: toRem(14);
 	}
 	// .quantity__button
 	&__button {
@@ -28,6 +30,15 @@
 		&--minus {
 			border-radius: toRem(62) 0 0 toRem(62);
 		}
+		.quantity--less & {
+			flex: 0 0 toRem(30);
+			font-size: toRem(16);
+			border-radius: toRem(6);
+			@media (max-width: toEm(600)) {
+				font-size: toRem(12);
+				flex: 0 0 toRem(20);
+			}
+		}
 		@media (any-hover: hover) {
 			&:hover {
 				background-color: #d1d1d1;
@@ -47,15 +58,24 @@
 			text-align: center;
 			color: var(--text-accent);
 			font-weight: 500;
+			.quantity--less & {
+				font-size: toRem(14);
+			}
 			@media (max-width: $mobileSmall) {
 				font-size: toRem(14);
 			}
 		}
 	}
+
 	@media (max-width: toEm(600)) {
 		height: toRem(44);
+		&--less {
+			width: toRem(105);
+			height: toRem(31);
+		}
 	}
 	@media (max-width: $mobileSmall) {
+		padding-inline: toRem(16);
 		width: toRem(110);
 	}
 }

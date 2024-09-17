@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	@@include('html/_head.htm',{
+	"title":"Cart - E-commerce"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{
+			"classList":"header header--border"
+			})
+			<main class="cart">
+				<div class="cart__navigation navigation">
+					<div class="navigation__container">
+						<ul class="navigation__list">
+							<li class="navigation__item">
+								<a href="#" class="navigation__link --icon-arrow-right">Home</a>
+							</li>
+							<li class="navigation__item">
+								Cart
+							</li>
+						</ul>
+					</div>
+				</div>
+				<section class="cart__body body-cart">
+					<div class="body-cart__container">
+						<h1 class="body-cart__title title title--small">Your cart</h1>
+						<form data-dev action="#" method="POST" class="body-cart__form">
+							<div class="body-cart__goods">
+								<article class="body-cart__product product-cart">
+									<a href="#" class="product-cart__img">
+										<img src="@img/products/10.jpg" alt="Gradient Graphic T-shirt">
+									</a>
+									<div class="product-cart__body">
+										<div class="product-cart__top">
+											<h3 class="product-cart__title"><a href="#">Gradient Graphic T-shirt</a></h3>
+											<button type="button" class="product-cart__remove --icon-delete"></button>
+										</div>
+										<div class="product-cart__characteristic characteristic-product">
+											<div class="characteristic-product__item">
+												Size: <span>Large</span>
+											</div>
+											<div class="characteristic-product__item">
+												Color: <span>White</span>
+											</div>
+										</div>
+										<div class="product-cart__bottom">
+											<div class="product-cart__prices prices">
+												<div class="prices__current-price">$145</div>
+											</div>
+											<div data-quantity class="product-cart__quantity quantity quantity--less">
+												<button
+													data-quantity-minus
+													type="button"
+													class="quantity__button quantity__button--minus --icon-minus">
+												</button>
+												<div class="quantity__input">
+													<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
+												</div>
+												<button
+													data-quantity-plus
+													type="button"
+													class="quantity__button quantity__button--plus --icon-plus">
+												</button>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="body-cart__product product-cart">
+									<a href="#" class="product-cart__img">
+										<img src="@img/products/03.jpg" alt="checkered shirt">
+									</a>
+									<div class="product-cart__body">
+										<div class="product-cart__top">
+											<h3 class="product-cart__title"><a href="#">checkered shirt</a></h3>
+											<button type="button" class="product-cart__remove --icon-delete"></button>
+										</div>
+										<div class="product-cart__characteristic characteristic-product">
+											<div class="characteristic-product__item">
+												Size: <span>Medium</span>
+											</div>
+											<div class="characteristic-product__item">
+												Color: <span>Red</span>
+											</div>
+										</div>
+										<div class="product-cart__bottom">
+											<div class="product-cart__prices prices">
+												<div class="prices__current-price">$180</div>
+												<div class="prices__old-price">$260</div>
+												<div class="prices__discount">-30%</div>
+											</div>
+											<div class="product-cart__actions">
+												<div data-quantity class="product-cart__quantity quantity quantity--less">
+													<button
+														data-quantity-minus
+														type="button"
+														class="quantity__button quantity__button--minus --icon-minus">
+													</button>
+													<div class="quantity__input">
+														<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
+													</div>
+													<button
+														data-quantity-plus
+														type="button"
+														class="quantity__button quantity__button--plus --icon-plus">
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</article>
+								<article class="body-cart__product product-cart">
+									<a href="#" class="product-cart__img">
+										<img src="@img/products/02.jpg" alt="skinny fit jeans">
+									</a>
+									<div class="product-cart__body">
+										<div class="product-cart__top">
+											<h3 class="product-cart__title"><a href="#">skinny fit jeans</a></h3>
+											<button type="button" class="product-cart__remove --icon-delete"></button>
+										</div>
+										<div class="product-cart__characteristic characteristic-product">
+											<div class="characteristic-product__item">
+												Size: <span>Large</span>
+											</div>
+											<div class="characteristic-product__item">
+												Color: <span>Blue</span>
+											</div>
+										</div>
+										<div class="product-cart__bottom">
+											<div class="product-cart__prices prices">
+												<div class="prices__current-price">$240</div>
+											</div>
+											<div data-quantity class="product-cart__quantity quantity quantity--less">
+												<button
+													data-quantity-minus
+													type="button"
+													class="quantity__button quantity__button--minus --icon-minus">
+												</button>
+												<div class="quantity__input">
+													<input data-quantity-value autocomplete="off" type="text" name="quantity" value="1">
+												</div>
+												<button
+													data-quantity-plus
+													type="button"
+													class="quantity__button quantity__button--plus --icon-plus">
+												</button>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+							<div class="body-cart__order order-cart">
+								<h4 class="order-cart__title">Order Summary</h4>
+								<div class="order-cart__info info-order">
+									<div class="info-order__item">
+										<div class="info-order__label">Subtotal</div>
+										<div class="info-order__price">$565</div>
+									</div>
+									<div class="info-order__item">
+										<div class="info-order__label">Discount (-20%)</div>
+										<div class="info-order__price info-order__price--c-red">-$113</div>
+									</div>
+									<div class="info-order__item">
+										<div class="info-order__label">Delivery Fee</div>
+										<div class="info-order__price">$15</div>
+									</div>
+								</div>
+								<div class="order-cart__total total-order">
+									<div class="total-order__label">Total</div>
+									<div class="total-order__price">$467</div>
+								</div>
+								<div class="order-cart__promo">
+									<input placeholder="Add promo code" type="text" class="order-cart__input input input--grey">
+									<button type="button" class="order-cart__apply button">Apply</button>
+								</div>
+								<button type="submit" class="order-cart__submit button --icon-arrow-navigation">Go to Checkout</button>
+							</div>
+						</form>
+					</div>
+				</section>
+				<section class="cart__subscribe subscribe subscribe--mb">
+					<div class="subscribe__container">
+						<div class="subscribe__body">
+							<h2 class="subscribe__title title title--small title--color-white">STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+							<form data-dev action="#" method="POST" class="subscribe__form form">
+								<input type="text" name="form[email]" data-required="email" data-error="Not correct email" placeholder="E-mail" class="form__input input">
+								<button type="submit" class="form__button button button--bg-white">Subscribe to Newsletter</button>
+							</form>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_js.htm',{})
+	</body>
+</html>

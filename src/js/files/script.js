@@ -33,6 +33,12 @@ function windowLoaded() {
 	initMoveTabLine(mediaMobileSmall.matches, calcWidthLineTabOnMobile)
 
 	document.addEventListener('click', documentActions)
+	document.addEventListener("formSent", function (e) {
+		const currentForm = e.detail.form
+		if (currentForm.getAttribute('id') === 'form-filter' &&
+			document.documentElement.classList.contains('filter-open'))
+			document.documentElement.classList.remove('filter-open')
+	});
 
 	function documentActions(e) {
 		const targetElement = e.target
@@ -85,7 +91,7 @@ function windowLoaded() {
 				if (openSubMenu) openSubMenu.classList.remove('--open')
 				if (document.documentElement.classList.contains('menu-open'))
 					menuClose()
-			} else if (!targetElement.closest('.header'))
+			} else if (!targetElement.closest('.header') && document.documentElement.classList.contains('search-show'))
 				document.documentElement.classList.remove('search-show')
 
 			if (isTablet) {
