@@ -70,7 +70,7 @@ function initSliders() {
 			slidesPerGroup: 1,
 			spaceBetween: 14,
 			speed: 600,
-			autoHeight: false,
+			autoHeight: true,
 			direction: "horizontal",
 			freeMode: {
 				enabled: true,
@@ -81,12 +81,9 @@ function initSliders() {
 				momentumVelocityRatio: 0,
 				sticky: true,
 			},
-
-			// Брейкпоінти
 			breakpoints: {
 				991.98: {
 					direction: "vertical",
-					autoHeight: true,
 				},
 			},
 		})

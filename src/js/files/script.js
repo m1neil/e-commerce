@@ -86,7 +86,8 @@ function windowLoaded() {
 			targetElement.closest('.product-cart').remove()
 			if (!document.querySelector('.product-cart')) {
 				const wrapper = document.querySelector('.body-cart__goods')
-				wrapper.insertAdjacentHTML('beforeend', '<div style="text-align: center;">Cart is empty</div>')
+				if (wrapper)
+					wrapper.insertAdjacentHTML('beforeend', '<div style="text-align: center;">Cart is empty</div>')
 			}
 		}
 

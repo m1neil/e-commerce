@@ -64,11 +64,17 @@
 	padding: toRem(15) toRem(24);
 	transition:
 		background-color 0.4s,
-		color 0.3s;
+		color 0.3s,
+		outline-color 0.3s;
 	cursor: pointer;
+	outline: toRem(2) solid transparent;
+	outline-offset: toRem(2);
 	&:has(input:checked) {
 		background-color: var(--bg-accent);
 		color: var(--text-inverse);
+	}
+	&:has(input:focus-visible) {
+		outline-color: var(--bg-accent);
 	}
 	@media (any-hover: hover) {
 		&:hover {
@@ -76,6 +82,7 @@
 			color: var(--text-inverse);
 		}
 	}
+
 	input {
 		position: absolute;
 		width: 0;
